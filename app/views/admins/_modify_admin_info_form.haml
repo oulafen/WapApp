@@ -1,0 +1,31 @@
+%br
+%br
+.row.font_18px
+  .text-right.col-xs-5
+    用户名:
+  .col-xs-4
+    .form-control#name(disabled="disabled" )
+      =@modify_admin[:name]
+  .col-xs-3.red_color
+    *
+%br
+.row.font_18px
+  .text-right.col-xs-5
+    密码:
+  .col-xs-4
+    %input.form-control.height_34#password(type="password" )
+  .col-xs-3.red_color
+    *
+%br
+.row.font_18px
+  .text-right.col-xs-5
+    再次输入密码:
+  .col-xs-4
+    %input.form-control.height_34#password_confirmation(type="password" )
+  .col-xs-3.red_color
+    *
+%br
+.row
+  .col-xs-5
+  .col-xs-4
+    #err

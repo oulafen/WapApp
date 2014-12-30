@@ -1,0 +1,58 @@
+.content-container{
+    margin: 4px;
+    border-radius: 6px;
+}
+.info {
+    background-size: 12px 12px;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    text-indent: 16px;
+    display: inline-block;
+    color: #d9434e;
+    font-size: 8px;
+    padding: 0 !important;
+    margin: 4px 0 0 2% !important;
+    height: 100%
+}
+.info_1 {
+    background-size: 12px 12px;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    text-indent: 16px;
+    display: inline-block;
+    color: #d9434e;
+    font-size: 8px;
+    padding: 0 !important;
+    margin: 4px 0 0 0 !important;
+    height: 100%
+}
+.recover_password{
+    color: #d9434e;
+    float: right;
+    margin: 8px 10px -5px 0;
+}
+.login{
+    width: 48%;
+    background-color: #d9434e !important;
+    color: #fff !important;
+    margin-bottom: 5px;
+}
+.register{
+    margin-left: 2%;
+    width: 48%;
+    background-color: #d9434e !important;
+    color: #fff !important;
+    margin-bottom: 5px;
+}
+.modal_btn{
+    text-align: center;
+    margin: 10px 16px ;
+}
+.login_img{
+    margin-top: -3px;
+    width: 13px;
+    height: 13px;
+}
+.register_err{
+    color: #d9434e;
+}

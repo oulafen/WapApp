@@ -1,0 +1,85 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/all_gift_packs_activities.css")
+%header
+  %p
+    {{app.name}}
+  .header-left(ng-tap='go_back()')
+    .btn-style.back-btn
+.wrapper#wrapper.infinite-scroll.scrollable(infinite-scroll='gift_pack_list.nextPage()' infinite-scroll-disabled='gift_pack_list.busy' infinite-scroll-distance='1' )
+  %div(id="timeline" timelinejs)
+    %ul#issues.gift-pack-activity-list-ul.no-margin
+      %li.gift-pack-activity-list-li(ng-class="{'margin-top':gift_pack.created_at != gift_pack_list.listData[$index-1].created_at}"
+       id="gift_pack.created_at" ng-repeat='gift_pack in gift_pack_list.listData' ng-click='go_gift_pack_detail(gift_pack.id)')
+        .row.no-margin
+          %img.gift-pack-activity-list-img.col-xs-2.no-padding(ng-src="{{app.logo}}")
+          .col-xs-8.no-padding
+            .row.no-margin
+              %h5.gift-pack-activity-list-name
+                {{gift_pack.name}}
+            .row.no-margin
+              %h5.gift-pack-activity-list-views
+                {{gift_pack.gift_pack_type}}
+            .row.no-margin
+              %h5.gift-pack-activity-list-views
+                剩余：{{gift_pack.surplus}}/{{gift_pack.amount}}
+                &nbsp;有效期：{{gift_pack.applicable_time}}
+
+          .col-xs-2.no-padding.gift-pack-activity-list-a
+            %div( ng-show="gift_pack.surplus>0 && gift_pack.user_fetched_status==0" style="color:#d9434e" )
+              %a
+                未领取>
+            %div(ng-show="gift_pack.surplus>0 && gift_pack.user_fetched_status==1")
+              %a
+                已领取>
+            %div(ng-show="gift_pack.surplus == 0" style="color:darkgray")
+              %a
+                已领完>
+      .loading-data(ng-show="gift_pack_list.listData.length!=gift_pack_list.listData[0].all_length && gift_pack_list.loading")
+        Loading data...
+
+    %ul#dates
+      %li( ng-repeat='gift_pack in gift_pack_list.listData' ng-class="{'date-li-show' : gift_pack.created_at != gift_pack_list.listData[$index-1].created_at}")
+        %a
+          %div(ng-show="gift_pack.created_at != gift_pack_list.listData[$index-1].created_at")
+            %span.time-arrow
+              {{gift_pack.created_at}}
+      %li.height-40
+
+
+%footer.footer_download
+  .btn-style.btn-2(ng-click="download_app()" )
+    %img.s-20(src="img/downloadAPP.PNG" )
+    下载应用
+.modal.fade#app_detail_modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content(style="height:150px" )
+      .modal-body(style="padding:0" )
+        %button(class="close modal_close" data-dismiss="modal") &times;
+        %br
+        .text-center
+          %h5 请选择版本进行下载
+        %br
+        .save_confirm(ng-show="downloaded_confirm")
+          已下载
+        .cursor-pointer.apk_switch(ng-switch="apk_status" )
+          .apk_load#apk_btn(ng-switch-when="true" ng-tap='download_app_file("#apk_a")')
+            %img.height_23(src="img/android.png" style="margin-top:-5px" )
+            安卓版下载
+          .apk_load_disabled(ng-switch-when='false')
+            %img.height_23(src="img/android.png" )
+            安卓版下载
+        %a#apk_a(href="{{apk_url}}" style="display:none" )
+        .ipa_switch(ng-switch='ipa_status' )
+          .ipa_load#ipa_btn(ng-switch-when='true' ng-tap='download_app_file("#ipa_a")')
+            %img.height_23(src="img/apple.png" style="margin-top:-5px" )
+            iPhone版下载
+          .ipa_load_disabled(ng-switch-when='false')
+            %img.height_23(src="img/apple.png" )
+            iPhone版下载
+        %a#ipa_a(href="{{ipa_url}}" style="display:none" )
+
+
+
+
+
+

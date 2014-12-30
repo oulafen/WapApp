@@ -1,0 +1,13 @@
+=render 'admins/jarvis_admin_css'
+=render 'admins/jarvis_admin_js'
+%header
+  #header-toolbar.container-fluid
+    .contained
+      %h1(onclick="javascript:window.location='/admins/index'")
+        指头邦后台管理系统
+      -if @admin
+        .pull-right.admin_font
+          当前用户：
+          =@admin[:name]
+          ,
+          =link_to '退出',logout_path ,method: 'delete'

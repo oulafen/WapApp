@@ -1,0 +1,50 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/more_page.css")
+%header
+  %p 更多
+  .header-left(ng-Tap = "back_to_home()")
+    %div.btn-style.home-btn
+.wrapper#wrapper.scrollable.height-full.wrapper_bg
+  %img#show_image.width-full(src= 'img/worldcup.png')
+  #image_load.image_load
+    %img.img_radius(style="width:42px; height:42px" ng-src= "{{user_logo}}" )
+    .score-contain(ng-show="user != null")
+      {{user.nickname}},积分：{{user.integral}}
+  %ul.list-style-1.operation-list
+    %li.share
+      %a(ng-tap="go_share()")
+        分享给好友
+    %li.feedback
+      %a(ng-tap = "go_feedback()")
+        意见反馈
+    %li.about
+      %a
+        关于我们
+    %li.clear
+      %a(ng-tap="clear_cache()")
+        清空缓存
+  .btn-container(ng-show="user != null")
+    %button.btn.logout(ng-click = 'logout()')
+      %img.logout-ico(src="img/logout.png" )
+      退出登录
+  .save_confirm(ng-show="cleaning")
+    正在清理
+  .save_confirm(ng-show="finished_clean")
+    缓存已清理
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li
+      %a(ng-tap="go_to_page('/video_list/belle')")
+        美女视频
+    %li
+      %a(ng-tap="go_to_page('/all_gift_packs')")
+        礼包
+    %li
+      %a(ng-tap="go_to_page('/bbs/1')")
+        吐槽
+    %li
+      %a(ng-tap="go_to_page('/search')")
+        搜索
+    %li.active
+      %a
+        更多

@@ -1,0 +1,67 @@
+{
+	"IcoMoonType": "selection",
+	"icons": [
+		{
+			"icon": {
+				"paths": [
+					"M146.746 621.254l320 320c24.992 24.994 65.516 24.994 90.51 0l320-320c24.992-24.994 24.992-65.516 0-90.51-24.994-24.994-65.516-24.994-90.51 0l-210.746 210.746v-613.49c0-35.346-28.654-64-64-64s-64 28.654-64 64v613.49l-210.746-210.746c-12.496-12.496-28.876-18.744-45.254-18.744s-32.758 6.248-45.254 18.744c-24.994 24.994-24.994 65.516 0 90.51z"
+				],
+				"tags": [
+					"arrow-down",
+					"download",
+					"bottom"
+				],
+				"grid": 16
+			},
+			"properties": {
+				"id": 300,
+				"order": 1,
+				"prevSize": 32,
+				"code": 58880,
+				"name": "arrow-down",
+				"ligatures": ""
+			},
+			"setIdx": 0,
+			"iconIdx": 300
+		}
+	],
+	"height": 1024,
+	"metadata": {
+		"name": "icomoon"
+	},
+	"preferences": {
+		"fontPref": {
+			"prefix": "icon-",
+			"metadata": {
+				"fontFamily": "icomoon"
+			},
+			"showGlyphs": true,
+			"metrics": {
+				"emSize": 512,
+				"baseline": 6.25,
+				"whitespace": 50
+			},
+			"resetPoint": 58880,
+			"showQuickUse": true,
+			"quickUsageToken": false,
+			"showMetrics": true,
+			"showMetadata": false
+		},
+		"imagePref": {
+			"color": 0,
+			"height": 32,
+			"columns": 16,
+			"margin": 16,
+			"png": false,
+			"sprites": true
+		},
+		"historySize": 100,
+		"showCodes": true,
+		"gridSize": 16,
+		"showLiga": false,
+		"showGrid": true,
+		"showGlyphs": true,
+		"showQuickUse": true,
+		"search": ""
+	}
+}

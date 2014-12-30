@@ -1,0 +1,13 @@
+%script(lang="javascript" src="/javascripts/admin/video_details_info.js" )
+%body(class="wysihtml5-supported" )
+  =render 'admins/admin_header'
+  #main.container-fluid{:role => "main"}
+    .contained
+      %aside.width_20
+        .sidebar-nav-fixed
+          %ul.menu
+            %li
+              %a{:href => 'javascript:show_iframe("video_info")'} 视频信息
+            %li
+              %a{:href => "/admins/videos/"+@video_id+"/comments_manage" ,:target=>"iframe_src"} 用户评论
+      %iframe#iframe_src(frameborder=0 width="79%" height="100%" name="iframe_src")

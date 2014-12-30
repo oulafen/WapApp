@@ -1,0 +1,37 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/all_gift_packs_activities.css")
+
+%header
+  %p 我的活动
+  .header-left(ng-tap='go_back()')
+    .btn-style.back-btn
+
+.wrapper#wrapper.scrollable.height-full(style="padding-bottom:20px" )
+  %div(id="timeline" timelinejs)
+    %ul#issues.gift-pack-activity-list-ul.no-margin
+      %li.gift-pack-activity-list-li(ng-class="{'margin-top':activity.created_at != my_activities[$index-1].created_at}"
+       ng-repeat='activity in my_activities' ng-click='go_activity_detail(activity.app_id,activity.id)' )
+        .row.no-margin
+          %img.gift-pack-activity-list-img.col-xs-2.no-padding(ng-src="{{activity.app_logo}}" )
+          .col-xs-8.no-padding
+            .row.no-margin
+              %h5.gift-pack-activity-list-name
+                {{activity.name}}
+            .row.no-margin
+              %h5.gift-pack-activity-list-views
+                {{activity.activity_type}}
+            .row.no-margin
+              %h5.gift-pack-activity-list-views
+                活动时间：{{activity.activity_time}}
+          .col-xs-2.no-padding.gift-pack-activity-list-a(style="text-align:right" )
+            %a
+              >
+    %ul#dates
+      %li( ng-repeat='activity in my_activities'
+      ng-class="{'date-li-show' : activity.created_at != my_activities[$index-1].created_at}")
+        %a
+          %div(ng-show="activity.created_at != my_activities[$index-1].created_at")
+            %span.time-arrow
+              {{activity.created_at}}
+      %li.height-40
+

@@ -1,0 +1,48 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/all_gift_packs_activities.css")
+
+%header
+  %p 我的礼包
+  .header-left(ng-tap='go_back()')
+    .btn-style.back-btn
+
+.wrapper#wrapper.scrollable.height-full(style="padding-bottom:20px" )
+  %div(id="timeline" timelinejs)
+    %ul#issues.gift-pack-activity-list-ul.no-margin
+      %li.gift-pack-activity-list-li(ng-class="{'margin-top':gift_pack.created_at != my_gift_packs[$index-1].created_at}"
+       ng-repeat='gift_pack in my_gift_packs' ng-click='go_gift_pack_detail(gift_pack.app_id,gift_pack.id)' )
+        .row.no-margin
+          %img.gift-pack-activity-list-img.col-xs-2.no-padding(ng-src="{{gift_pack.app_logo}}")
+          .col-xs-8.no-padding
+            .row.no-margin
+              %h5.gift-pack-activity-list-name
+                {{gift_pack.name}}
+            .row.no-margin
+              %h5.gift-pack-activity-list-views
+                {{gift_pack.gift_pack_type}}
+            .row.no-margin
+              %h5.gift-pack-activity-list-views
+                卡号：{{gift_pack.gift_pack_card_num}}
+          .col-xs-2.no-padding.gift-pack-activity-list-a
+            %div
+              %a(ng-click="select_card_num($index)")
+                复制
+    %ul#dates
+      %li( ng-repeat='gift_pack in my_gift_packs' ng-class="{'date-li-show' : gift_pack.created_at != my_gift_packs[$index-1].created_at}")
+        %a
+          %div(ng-show="gift_pack.created_at != my_gift_packs[$index-1].created_at")
+            %span.time-arrow
+              {{gift_pack.created_at}}
+      %li.height-40
+
+.modal.fade#copy-modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content
+      .modal-header.modal_header
+        %p
+          请选中卡号并且复制
+        .modal-header-right(ng-tap='close_modal()')
+          X
+      %div(style="padding:15px 5px" )
+        %textarea.form-control(ng-model = "card_num" style="height:30px" )
+

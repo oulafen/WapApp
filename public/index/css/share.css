@@ -1,0 +1,35 @@
+.share_block{
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #d9434e;
+}
+.fingerbang_logo{
+    /*border-right:1px solid #808080;*/
+    padding: 10px !important;
+}
+.share_border{
+    margin: 0;
+    /*margin: 0 10px;*/
+    border-bottom: 1px solid #808080;
+}
+.share_right{
+    min-height: 70px;
+    border-left:1px solid #808080;
+}
+.share_logo{
+    margin: 0 8px 0 0;
+    float: left;
+    width: 30px !important;
+    height: 30px !important;
+}
+.padding-0{
+    padding: 0;
+}
+.share_to{
+    height: 40px;
+    padding: 5px 20px;
+}
+.share_text{
+    margin-top: 5px;
+    float: left;
+}

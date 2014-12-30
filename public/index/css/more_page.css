@@ -1,0 +1,107 @@
+.image_load{
+    position: relative;
+    left: 8px;
+    top: -26px;
+    height: 42px !important;
+    width: 42px !important;
+}
+
+.image_load img{
+    height: 42px !important;
+    width: 42px !important;
+}
+.img_radius{
+    border-radius: 10px;
+}
+.wrapper_bg{
+    background-color: #eeeeee;
+}
+.user-load-head{
+    width: 42px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: #000000;
+    color:#fff;
+    opacity: 0.5;
+    font-size: 8px;
+}
+
+ul.operation-list{
+    position: relative;
+    top: 10px;
+    margin-right: 8px;
+    margin-left: 8px;
+    margin-top: -24px;
+}
+.operation-list li{
+    height: 30px;
+}
+
+.operation-list li a{
+    padding-top:6px ;
+    padding-bottom:4px ;
+    color: #000000;
+    font-size: 12px;
+    padding-left: 42px;
+}
+
+li.clear{
+    background-image: url("../img/clear.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 20px 6px ;
+}
+
+li.share{
+    background-image: url("../img/share.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 20px 6px ;
+}
+
+li.feedback{
+    background-image: url("../img/feedback.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 20px 6px ;
+}
+
+li.about{
+    background-image: url("../img/aboutus.png");
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    background-position: 20px 6px ;
+
+}
+
+.score-contain{
+    position: absolute;
+    bottom: 0px;
+    left: 42px;
+    width: 100px;
+    font-size: 8px;
+}
+
+.btn-container{
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+button.btn.logout{
+    width: 100%;
+    height: 26px;
+    background-color: #d9434e !important;
+    color: #ffffff;
+    text-shadow: none;
+    font-size: 12px;
+ }
+
+img.logout-ico{
+    width: 12px;
+    height: 12px;
+    margin-top: -4px;
+}

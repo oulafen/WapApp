@@ -1,0 +1,7 @@
+%script(lang="javascript" src="/javascripts/admin/index.js")
+%body(class="wysihtml5-supported" )
+  =render 'admins/admin_header'
+  #main.container-fluid{:role => "main"}
+    .contained
+      =render 'admins/admin_left'
+      %iframe#iframe_src(frameborder=0 width="79%" height="100%" name="iframe")

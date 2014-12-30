@@ -1,0 +1,35 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header
+      吐槽详情
+    %br
+    %br
+    #invoice-id-01.invoice
+      .invoice-body
+        %table
+          %thead
+            %tr
+              %th.item 序号
+              %th.desc 评论内容
+              %th.price 评论用户
+              %th.qtn 发布时间
+              %th.sub 操作
+          %tbody
+            -num = 0
+            -@replies.each do |reply|
+              -num += 1
+              %tr
+                %td
+                  = num
+                %td
+                  = reply[:reply_body]
+                %td
+                  = @users[reply[:replier]][:nickname]
+                %td
+                  = reply[:created_at]
+                %td
+                  = link_to '删除', reply , method: :delete, data: { confirm: '删除该评论?' }
+
+    = will_paginate @replies, :previous_label => "",:next_label=> ""
+    =render 'admins/admin_reply_to_video'

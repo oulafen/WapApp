@@ -1,0 +1,55 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/video_list.css")
+%header
+  %p
+    {{type}}
+  .header-left(ng-Tap = "back_to_home()")
+    %div.btn-style.home-btn
+.wrapper#wrapper.infinite-scroll.scrollable(infinite-scroll='video_list.nextPage()' infinite-scroll-disabled='video_list.busy' infinite-scroll-distance='1')
+  %div(id="timeline" timelinejs)
+    %ul#issues.video-list-ul.no-margin
+      %li.video-list-li(ng-class="{'margin-top':video.created_at != video_list.listData[$index-1].created_at}"
+       id="{{video.created_at}}" ng-repeat='video in video_list.listData' ng-click='go_video_detail(video.id)')
+        .row.no-margin
+          %img.video-list-img.col-xs-2.no-padding(ng-src="{{video.list_img.url}}")
+          .col-xs-8.no-padding
+            .row.no-margin
+              %h5.video-list-name
+                {{video.name}}
+            .row.no-margin
+              %h5.video-list-intro
+                {{video.intro}}
+            .row.no-margin
+              %h5.video-list-views
+                浏览量：{{video.views}}
+      .loading-data(ng-show="video_list.listData.length!=video_list.listData[0].all_length && video_list.loading")
+        Loading data...
+
+    %ul#dates
+      %li( ng-repeat='video in video_list.listData' ng-class="{'date-li-show' : video.created_at != video_list.listData[$index-1].created_at}")
+        %a
+          %div(ng-show="video.created_at != video_list.listData[$index-1].created_at")
+            %span.time-arrow
+              {{video.created_at}}
+      %li.height-40
+
+
+
+
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li(class="{{is_active}}")
+      %a(ng-tap='go_to_page("/video_list/belle")')
+        美女视频
+    %li
+      %a(ng-tap="go_to_page('/all_gift_packs')")
+        礼包
+    %li
+      %a(ng-tap="go_to_page('/bbs/1')")
+        吐槽
+    %li
+      %a(ng-tap="go_to_page('/search')")
+        搜索
+    %li
+      %a(ng-tap="go_to_page('/more')")
+        更多

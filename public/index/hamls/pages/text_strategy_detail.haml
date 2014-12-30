@@ -1,0 +1,42 @@
+-# coding: utf-8
+%header
+  %p
+    应用攻略
+  .header-left(ng-tap='go_app_detail()')
+    .btn-style.back-btn
+.wrapper#wrapper.scrollable(style="padding-bottom: 30px;" )
+  .text_strategy_detail_name
+    {{strategy.name}}
+  .video-intro-content
+    %video-strategy-detail
+%footer.footer_download
+  .btn-style.btn-2(ng-click="download_app()" )
+    %img.s-20(src="img/downloadAPP.PNG" )
+    下载应用
+.modal.fade#app_detail_modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content(style="height:150px" )
+      .modal-body(style="padding:0" )
+        %button(class="close modal_close" data-dismiss="modal") &times;
+        %br
+        .text-center
+          %h5 请选择版本进行下载
+        %br
+        .save_confirm(ng-show="downloaded_confirm")
+          已下载
+        .cursor-pointer.apk_switch(ng-switch="apk_status" )
+          .apk_load#apk_btn(ng-switch-when="true" ng-tap='download_app_file("#apk_a")')
+            %img.download_img(src="img/android.png" style="margin-top:-5px" )
+            安卓版下载
+          .apk_load_disabled(ng-switch-when='false')
+            %img.download_img(src="img/android.png" )
+            安卓版下载
+        %a#apk_a(href="{{apk_url}}" style="display:none" )
+        .ipa_switch(ng-switch='ipa_status' )
+          .ipa_load#ipa_btn(ng-switch-when='true' ng-tap='download_app_file("#ipa_a")')
+            %img.download_img(src="img/apple.png" style="margin-top:-5px" )
+            iPhone版下载
+          .ipa_load_disabled(ng-switch-when='false')
+            %img.download_img(src="img/apple.png" )
+            iPhone版下载
+        %a#ipa_a(href="{{ipa_url}}" style="display:none" )

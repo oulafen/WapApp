@@ -1,0 +1,19 @@
+-# coding: utf-8
+%script(type="text/javascript" src="js/openjs.js")
+%link(rel="stylesheet" type="text/css" href="css/share.css")
+%header
+  %p 分享
+  .header-left
+    .btn-style.back-btn( ng-Tap="go_app_detail()")
+.wrapper#wrapper.scrollable.height-full
+  .share_block
+    .share_border.row
+      .col-xs-3.fingerbang_logo.padding-0
+        %img(src="img/128.png" style="width:50px;height:50px" )
+      .col-xs-9.share_right.padding-0#share_content(contentEditable=true)
+        {{share_text}}
+    .share_to
+      .share_text
+        分享到：
+      %img.share_logo(src="img/tencent.png" ng-tap='share_to_tencent()')
+      %img.share_logo(src="img/sina.png" ng-tap='share_to_sina()')

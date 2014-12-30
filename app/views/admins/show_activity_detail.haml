@@ -1,0 +1,78 @@
+%script(lang="javascript"  src="/javascripts/admin/select_time.js")
+%script(lang="javascript"  src="/javascripts/admin/activity_details.js")
+
+%link(rel="stylesheet" type="text/css" href="/stylesheets/add_gift_pack.css")
+
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0;margin-right:15px !important" )
+    %a.cursor-pointer(href="javascript:back_to_all_app()" )
+      应用管理>>
+    %a.cursor-pointer(href="/admins/all_activities" )
+      =@app[:name]
+      >>
+    = @activity[:name]
+
+    %br
+    %br
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        活动名称：
+      .col-xs-3
+        %input#name.height-28(type="text" value="#{@activity[:name]}" )
+      .add_app_1.text-right.col-xs-1
+        活动类型：
+      .col-xs-2
+        %select#activity_type_select( name='activity_category' rel="#{@activity[:activity_type]}")
+          %option --请选择类别--
+          %option 互动游戏
+    %br
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        参与是否扣除积分：
+      .col-xs-2.padding-right-0(style="width:140px" )
+        %input#deduct_integral.height-28(type="text" )
+        分
+      .col-xs-1.text_left(style="width: 70px;" )
+        %label
+          %input#is_deduct(name="IfDeduct" type="radio"  rel="#{@activity[:deduct_integral]}")
+          是
+      .col-xs-1
+        %label
+          %input#no_deduct(name="IfDeduct" type="radio")
+          否
+    %br
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2#activity_time(rel="#{@activity[:activity_time]}")
+        活动时间：
+      .col-xs-3.padding-right-0
+        #begin
+      .col-xs-1.text_center.zhi
+        至
+      .col-xs-3.padding-0
+        #end
+      .col-xs-1
+        %input#permanent(type="checkbox")
+        永久
+    %br
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        活动详情：
+      .col-xs-10.font-size-14
+        =render 'admins/activity_editor'
+        #editor_activity_detail
+          =raw @activity[:detail]
+    %br
+    .row.no-margin.text-center.hide#post_tips
+      %p.post-tip
+        正在上传数据,请耐心等待...
+    .row
+      .text-right.col-xs-6
+        %button.btn-local(onclick="post_activity_data()" )
+          保存
+      .col-xs-6
+        %button.btn-local(onclick="back_all_activities_page()" )
+          取消
+    %br
+    %br
+

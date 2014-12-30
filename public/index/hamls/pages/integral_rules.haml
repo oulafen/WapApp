@@ -1,0 +1,38 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/integral_rules.css")
+%header
+  %p 积分规则
+  .header-left
+    .btn-style.back-btn(ng-tap="go_back()")
+.wrapper#wrapper.scrollable.height-full
+  %img#show_image.width-full(src= 'img/angry-birds.png')
+  .row.no-margin.integral_rules_main_div
+    .col-xs-12.padding-bottom-10
+      .row.no-margin.integral_rules_row
+        .col-xs-1.integral_rules_icon_col
+          %img.integral_rules_icon_img(ng-src="{{red_bird_src}}")
+        .col-xs-11.padding-right-0
+          新用户注册指头邦即享2000积分
+      .row.no-margin.integral_rules_row
+        .col-xs-1.integral_rules_icon_col
+          %img.integral_rules_icon_img(ng-src="{{yellow_bird_src}}")
+        .col-xs-11.padding-right-0
+          指头邦用户下载单个应用+200积分
+      .row.no-margin.integral_rules_row
+        .col-xs-1.integral_rules_icon_col
+          %img.integral_rules_icon_img(ng-src="{{green_bird_src}}")
+        .col-xs-11.padding-right-0
+          指头邦用户参与吐槽发帖+200积分，参与回帖+100积分
+      .row.no-margin.integral_rules_row
+        .col-xs-1.integral_rules_icon_col
+          %img.integral_rules_icon_img(ng-src="{{blue_bird_src}}")
+        .col-xs-11.padding-right-0
+          指头邦用户参与应用，视频评论+100积分
+
+    %button.btn.login_finger_bang(ng-click="go_login()")
+      %img.img_btn(src="img/login.png")
+      登录指头邦
+    %button.btn.width-full.login_finger_bang(ng-click="go_user_improve_info()" )
+      %img.width_13(src="img/user_register.png" )
+      没有指头邦账号,去注册
+

@@ -1,0 +1,47 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/search_page.css")
+%header
+  %p
+    我的下载
+  .header-left(ng-tap='go_personal_center()')
+    .btn-style.back-btn
+.wrapper#wrapper.scrollable
+  .search_list(style="margin-top:12px" )
+    .app-list-li(ng-repeat="app in apps" ng-tap="go_app_detail(app.id)")
+      .row.no-margin
+        %img.app-list-img.col-xs-2.no-padding(ng-src="{{app.logo}}")
+        .col-xs-7.no-padding
+          .row.no-margin
+            %h5.app-list-name
+              {{app.name}}
+          .row.no-margin
+            .padding_left_10
+              .info_1.topics
+                {{app.replies}}条
+              .info.download
+                {{app.downloads}}次
+          .row.no-margin
+            %h5.app-list-intro
+              {{app.introduce}}
+        .col-xs-2.no-padding
+          .btn_price_free(ng-show="app.price==0")
+            免费
+          .btn_price_limit(ng-show="app.price==-1")
+            限免
+          .btn_price_paid(ng-show="app.price>0")
+            {{app.price}}元
+  -#%ul.app_ul(style="{{ul_padding}}" )
+  -#  %li(ng-repeat='(index, app) in apps' style="{{li_tag_margin}}"  class='{{index % 2 == 0 || "odd"}}')
+  -#    %img(ng-src="{{app.logo}}" style="width:40px;height:40px;float:left;" )
+  -#    %div
+  -#      .app_name
+  -#        {{app.name}}
+  -#
+  -#      %div(ng-show="get_app_price(app.price)==0")
+  -#        %h5 免费
+  -#      %div(ng-show="get_app_price(app.price)==-1")
+  -#        %h5 限免
+  -#      %div(ng-show="get_app_price(app.price)>0")
+  -#        %h5
+  -#          {{app.price}}
+  -#          元

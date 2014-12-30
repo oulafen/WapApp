@@ -1,0 +1,19 @@
+-# coding: utf-8
+%script(type="text/javascript" src="js/openjs.js#debug=yes")
+%link(rel="stylesheet" type="text/css" href="css/share.css")
+%header
+  %p 分享
+  .header-left
+    .btn-style.back-btn( ng-Tap="go_more()")
+.wrapper#wrapper.scrollable.height-full
+  .share_block
+    .share_border.row
+      .col-xs-3.fingerbang_logo.padding-0
+        %img(src="img/128.png" style="width:50px;height:50px" )
+      .col-xs-9.share_right.padding-0#share_content(contentEditable=true)
+        @指头邦 手机游戏热门活动、发卡发号、美女视频、新游戏预告独家测评应有尽有、你也来看看吧。官方网站：http://wap.handx2.com   指头邦Appstore下载地址：https://itunes.apple.com/cn/app/zhi-tou-bang/id886104928?mt=8
+    .share_to
+      .share_text
+        分享到：
+      %img.share_logo(src="img/tencent.png" ng-tap='share_to_tencent()')
+      %img.share_logo(src="img/sina.png" ng-tap='share_to_sina()')

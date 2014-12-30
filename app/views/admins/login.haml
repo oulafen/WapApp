@@ -1,0 +1,26 @@
+%body(class="wysihtml5-supported" )
+.height-wrapper
+  =render 'admins/admin_header'
+  .col-xs-12
+    .col-xs-4
+    .col-xs-4.admin_login_form(onkeypress="enter_form(event)" )
+      %h4 指头邦后台管理系统
+      .login_form_inside
+        .input-group
+          %span.input-group-addon.height_34
+            用户名
+          %input.form-control.height_34#name
+        %br
+        .input-group
+          %span.input-group-addon.height_34
+            密码：
+          %input.form-control.height_34#password(type="password" )
+        %br
+        #err
+        .col-xs-12
+          .col-xs-4
+          .col-xs-4
+            %button.btn-local#submit(onclick="admin_login()" )
+              登录
+          .col-xs-4
+    .col-xs-4

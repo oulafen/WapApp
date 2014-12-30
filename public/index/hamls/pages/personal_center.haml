@@ -1,0 +1,64 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/personal_center.css")
+%header
+  %p 个人中心
+  .header-left
+    %div.btn-style.home-btn(ng-Tap = "back_to_home()")
+.wrapper#wrapper.scrollable.height-full.wrapper_bg
+  %img#show_image.width-full(src= 'img/worldcup.png')
+  #image_load.image_load(ng-click="go_crop_image()")
+    %img.img_radius.s-55(src= 'img/default_logo_user.png' ng-show="default_logo_show" )
+    %img.img_radius.s-55(ng-src= '{{third_party_user_head}}' ng-show="third_logo_show" )
+    %img.img_radius.s-55(ng-src= '{{tourist_logo_src}}' ng-show="tourist_logo_show" )
+    %input#input_logo(data-file='' type="file" style="display:none"  name='image' ng-model="input_logo")
+    .user-load-head
+      修改头像
+  %form.info_form(name="myForm")
+    %fieldset.form-wrapper
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;我的昵称：
+        %ng-custom-input.form-control#nickname(ng-change="listen_nickname_change()" ng-model="nickname_input" type="text" ng-enter="save_nickname(value)" )
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;&nbsp;&nbsp;&nbsp;登录名：&nbsp;
+        %ng-custom-input.form-control.disabled_color(value='{{user.mailbox}}' type="email" disabled="disabled")
+    .clearfix
+      %button.btn.fr.forget_password(ng-click = "go_reset_password()")
+        %img.width_13(src="img/password.png")
+        修改密码
+  %ul.list_style
+    %li(ng-click="go_to_my_gift_packs()")
+      %a
+        .list_in
+          >
+        %img.list_img(src="img/gift.png" )
+        我的礼包
+
+    %li(ng-click="go_to_my_activities()")
+      %a
+        .list_in
+          >
+        %img.list_img(src="img/register.png" )
+        我的活动
+    %li(ng-click="go_to_my_topics()")
+      %a
+        .list_in
+          >
+        %img.list_img(src="img/topic.png" )
+        我的吐槽
+    %li(ng-click="go_to_current_download_apps()")
+      %a
+        .list_in
+          >
+        %img.list_img(src="img/download.png" )
+        我的下载
+  %button.btn.integral_rules(ng-click="go_integral_rules_page()")
+    %img.img_btn(src="img/white_coin.png")
+    积分规则
+  %br
+  %br
+  .save_confirm(ng-show="save_confirm")
+    信息保存成功
+  %br
+  %br

@@ -1,0 +1,64 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/login.css")
+%header
+  %p 登录
+  .header-left
+    .btn-style.home-btn( ng-Tap="go_back()")
+
+.wrapper#wrapper.scrollable.height-full
+  %img(src="img/worldcup.png" )
+  %form.wrapper-inner(name="myForm")
+    %fieldset.form-wrapper
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;用户名:
+        %ng-custom-input.form-control(ng-model="mailbox" ng-enter="login()"  placeholder="请输入您的注册邮箱" type="email")
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;&nbsp;&nbsp;密码:&nbsp;&nbsp;
+        %ng-custom-input.form-control( ng-model="password"   ng-enter="login()" placeholder="请输入密码" type="password")
+      .row#error.hide.padding-top-10.margin-left-0
+        .col-xs-12.padding-left-0
+          .register_err#error_info
+      %button.btn.fr.forget_password(ng-click="go_forget_password()" )
+        %img.width_13(src="img/password.png")
+        忘记密码
+      %br
+      %button#ssss.btn.width-full.login_finger_bang(ng-disabled="!(mailbox && password)" ng-click="login()")
+        %img.width_13(src="img/login.png")
+        登录指头邦
+      %button.btn.width-full.login_finger_bang(ng-click="go_user_improve_info()" )
+        %img.width_13(src="img/user_register.png" )
+        没有指头邦账号,去注册
+  %br
+  .third_login
+    选择一种方式直接登录
+    .fake_third_login
+      %br
+      .fake_tencent(ng-click='fake_twb_login()')
+        .fake_third_img
+          %img.width_13(src="img/tencent-weibo.png" )
+        .fake_third_text
+          腾讯微博登录
+      .fake_sina(ng-click='fake_sina_login()')
+        .fake_third_img
+          %img.width_13(src="img/sina-weibo.png" )
+        .fake_third_text
+          新浪微博登录
+      -#.fake_tencent
+      -#  .fake_third_img
+      -#    %img.width_13(src="img/wechat.png" )
+      -#  .fake_third_text
+      -#    微信登录
+
+    #qq_account_log.qq_account_log(style="display:none")
+      %button#login_btn.login_btn.login_btn03{:href => "javascript:;"}
+      %button#logout_btn.logout_btn
+    .sina(style="display:none")
+      %button#wb_connect_btn
+    %br
+    %br
+    %br
+    %br
+    %br
+    %br

@@ -1,0 +1,48 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0;margin-right:15px !important" )
+    %a.cursor-pointer(href="javascript:back_to_all_app()" )
+      应用管理>>
+    %font
+      =@app.name
+    %br
+    %br
+    %br
+    .row
+      .col-xs-2
+        =link_to '添加活动', new_activity_path,:class => 'btn'
+
+    %br
+    .row
+      %table.table
+        %thead
+          %tr
+            %td.text_center
+              序号
+            %td.text_center
+              名称
+            %td.text_center
+              活动开放时间
+            %td.text_center
+              创建时间
+            %td.text_center
+              操作
+        %tbody
+          -num=0
+          -@activities.each do |activity|
+            -num +=1
+            %tr
+              %td.text_center
+                =num
+              %td.text_center
+                =activity["name"]
+              %td.text_center
+                =activity["activity_time"]
+              %td.text_center
+                =activity["created_at"]
+              %td.text_center
+                =link_to '详情', activity_detail_path(:id=>activity['id'])
+                =link_to '删除', delete_activity_path(:id=>activity['id']),method:'delete',data:{:confirm=>'确定删除该礼包？'}
+      = will_paginate @activities, :previous_label => "",:next_label=> ""
+
+

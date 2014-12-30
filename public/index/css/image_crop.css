@@ -1,0 +1,23 @@
+.image-crop-footer{
+    background: #333333 !important;
+    padding: 10px 20px !important;
+}
+
+.footer-row{
+    background: #333333 !important;
+    margin: 0 0 !important;
+    color: #fff !important;
+}
+
+.float-left{
+    cursor: pointer !important;
+    color: #fff !important;
+    float: left !important;
+    padding: 5px 10px !important;
+}
+.float-right{
+    cursor: pointer !important;
+    color: #fff !important;
+    float: right !important;
+    padding: 5px 10px !important;
+}

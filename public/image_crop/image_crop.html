@@ -1,0 +1,23 @@
+<link href='../index/css/image_crop.css' rel='stylesheet' type='text/css'>
+<header class='hide'></header>
+<!--<div class='wrapper scrollable' id='wrapper' style='top:0;min-height:100%;background: #333333;display:table;'>-->
+<div class='wrapper scrollable' id='wrapper' style='top:0;min-height:100%;background: #333333;'>
+  <!--<div style="display:table-cell; vertical-align:middle;">-->
+      <img id="sourseImage" ng-src="{{img}}"  imageonload exif="true"/>
+  <!--</div>-->
+  <canvas height='512' id='preview' style='overflow:hidden; display:none' width='512'></canvas>
+</div>
+<footer class='image-crop-footer'>
+  <div class='row footer-row'>
+    <div class='col-xs-6 '>
+      <span class='float-left' ng-tap='go_back()'>
+        取消
+      </span>
+    </div>
+    <div class='col-xs-6'>
+      <span class='float-right' ng-tap='save_crop_logo()'>
+        选取
+      </span>
+    </div>
+  </div>
+</footer>

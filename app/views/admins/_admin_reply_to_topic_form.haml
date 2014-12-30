@@ -1,0 +1,27 @@
+%br
+%br
+%form(method="post" action="/admins/admin_reply_to_topic" name="reply_to_topic")
+  .row.font_18px
+    .text-right.col-xs-5
+      用户:
+    .col-xs-4
+      %input.form-control(name="user_name" )
+      %input.form-control.hidden{:name=>"topic" ,:value=>@topic[:id] }
+
+  %br
+  .row.font_18px
+    .text-right.col-xs-5
+      内容:
+    .col-xs-4
+      %textarea.form-control(name="content" )
+    .col-xs-3.red_color
+      *
+  %br
+  .row
+    .col-xs-5
+    .col-xs-2
+      %button.btn-local_2
+        回帖
+    .col-xs-2
+      %button.btn-local_1(type="button" onclick="javascript:history.back();" )
+        取消

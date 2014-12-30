@@ -1,0 +1,140 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/gift_pack_detail.css")
+%header
+  %p
+    礼包详情
+  .header-left(ng-tap='go_back()')
+    .btn-style.back-btn
+  .header-right(ng-click='share_app()')
+    %img.share_img(src="img/share——white.png"  )
+.wrapper#wrapper.scrollable
+  .content-container
+    .clearfix.background-white(style="{{page_padding}}" )
+      %img(ng-src="{{app.logo}}" style="width:80px;height:80px; float:left;" )
+      %div(style="margin-left:90px;width:75%" )
+        %strong.app_detail_name
+          {{gift_pack.name}}
+        .gift_pack_bbs
+          .info_1.topics(style="background-repeat: no-repeat;background-size: 12px 12px; background-position: 0px 0px;" )
+            {{replies.length}}条
+          .info.download(style="background-repeat: no-repeat;background-size: 12px 12px; background-position: 0px 0px;" )
+            {{app.download_num}}
+            次
+        %div
+          %div(style="color:#929292;width:50%;float:left" )
+            {{gift_pack.gift_pack_type}}
+    %div.background-white(style="margin-top:8px;{{page_padding}}" )
+      .width-full(style="height:60px" )
+        %button.btn.receive_btn.copy_css(ng-show="gift_pack.surplus>0 && gift_pack.user_fetched_status==0" ng-click="user_fetch_gift_pack()")
+          领取
+        %button.btn.receive_btn(ng-show="gift_pack.surplus>0 && gift_pack.user_fetched_status==1" disabled="disabled" )
+          已领取
+        %button.btn.receive_btn(ng-show="gift_pack.surplus==0" disabled="disabled" )
+          已领完
+        %div.receive_font
+          %font(color="#d9434e")
+            剩余：
+            {{gift_pack.surplus}}/{{gift_pack.amount}}
+
+      .width-full
+        %img.s-20(src="img/register.png" )
+        %font.tag_name
+          礼包详情
+        .gift_pack_detail_padding
+          %gift-pack-detail#gift-pack-detail
+
+      .width-full
+        %img.s-20(src="img/clock-icon.png" )
+        %font.tag_name
+          适用时间
+        .gift-pack-font-2
+          {{gift_pack.applicable_time}}
+      .width-full
+        %img.s-20(src="img/coin.png" )
+        %font.tag_name
+          兑换积分
+        .gift-pack-font-2
+          {{gift_pack.deduct_integral}}分
+
+    .save_confirm(ng-show="integral_lack_confirm")
+      积分不足
+    .save_confirm(ng-show="fetch_success_confirm")
+      礼包领取成功
+    .save_confirm(ng-show="deduct_integral_confirm")
+      扣除{{gift_pack.deduct_integral}}积分
+.modal.fade#regist-login-modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content
+      .modal-header.modal_header
+        %p
+          登录
+        .modal-header-right(ng-tap='close_modal()')
+          X
+      .clearfix
+        .recover_password(ng-click="go_forget_password()" )
+          忘记密码
+      %form.wrapper-inner(name="myForm")
+        %fieldset.form-wrapper
+          .input-group.bottom_margin
+            %span.input-group-addon.modal-login-label
+              &nbsp;用户名:
+            %ng-custom-input.form-control(ng-enter="login()" ng-model="mailbox" placeholder="请输入您的注册邮箱" type="email"  )
+          .input-group
+            %span.input-group-addon.modal-login-label
+              &nbsp;&nbsp;&nbsp;密码:&nbsp;&nbsp;
+            %ng-custom-input.form-control( type="password" ng-model="password" placeholder="请输入密码" ng-enter="login()")
+          .row#error.hide.padding-top-10.margin-left-0
+            .col-xs-12.padding-left-0
+              .register_err#error_info
+      .modal_btn
+        %button.btn.login(ng-disabled="!(mailbox && password)" ng-click="login()")
+          %img.login_img(src="img/login.png")
+          登录
+        %button.btn.register(ng-click="go_to_user_improve_info()")
+          %img.login_img(src="img/user_register.png" )
+          注册
+
+.modal.fade#copy-modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content
+      .modal-header.modal_header
+        %p
+          请选中卡号并且复制
+        .modal-header-right(ng-tap='close_modal()')
+          X
+      %div(style="padding:15px 5px" )
+        %textarea.form-control(ng-model = "card_num" style="height:30px" )
+
+%footer.footer_download
+  .btn-style.btn-2(ng-click="download_app()" )
+    %img.s-20(src="img/downloadAPP.PNG" )
+    下载应用
+
+.modal.fade#app_detail_modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content(style="height:150px" )
+      .modal-body(style="padding:0" )
+        %button(class="close modal_close" data-dismiss="modal") &times;
+        %br
+        .text-center
+          %h5 请选择版本进行下载
+        %br
+        .save_confirm(ng-show="downloaded_confirm")
+          已下载
+        .cursor-pointer.apk_switch(ng-switch="apk_status" )
+          .apk_load#apk_btn(ng-switch-when="true" ng-tap='download_app_file("#apk_a")')
+            %img.height_23(src="img/android.png" style="margin-top:-5px" )
+            安卓版下载
+          .apk_load_disabled(ng-switch-when='false')
+            %img.height_23(src="img/android.png" )
+            安卓版下载
+        %a#apk_a(href="{{apk_url}}" style="display:none" )
+        .ipa_switch(ng-switch='ipa_status' )
+          .ipa_load#ipa_btn(ng-switch-when='true' ng-tap='download_app_file("#ipa_a")')
+            %img.height_23(src="img/apple.png" style="margin-top:-5px" )
+            iPhone版下载
+          .ipa_load_disabled(ng-switch-when='false')
+            %img.height_23(src="img/apple.png" )
+            iPhone版下载
+        %a#ipa_a(href="{{ipa_url}}" style="display:none" )
+

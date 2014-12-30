@@ -1,0 +1,26 @@
+%body.height-auto
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 第三方用户管理
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            用户名
+          %td
+            第三方平台
+      %tbody
+        -num=0
+        -@third_party_users.each do |user|
+          -num +=1
+          %tr
+            %td
+              =num
+            %td
+              =user[:name]
+            %td
+              =user[:from]
+    = will_paginate @third_party_users, :previous_label => "",:next_label=> ""
+

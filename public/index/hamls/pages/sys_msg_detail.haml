@@ -1,0 +1,16 @@
+-# coding: utf-8
+%header
+  %p
+    站内信
+  .header-left(ng-tap='go_back()')
+    .btn-style.back-btn
+.wrapper#wrapper.scrollable(style="bottom: 0 !important; padding-bottom: 30px;" )
+  .video-header.clearfix
+    %img.list-img(src="img/128.png")
+    %div.video-info-container
+      .row.no-margin(style="margin-top: 2% !important" )
+        %h5.col-xs-6.video-detail-time 日期：{{parse_date(msg.created_at)}}
+
+  .video-intro-content
+    %p
+      {{msg.content}}

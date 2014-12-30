@@ -1,0 +1,170 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/app_detail.css")
+%header(onload="show_look_all()" )
+  %p
+    {{app.name}}
+  .header-left(ng-tap='go_home()' ng-show = "!all_replies_show")
+    .btn-style.back-btn
+  .header-left(ng-tap='back_detail()' ng-show = "all_replies_show")
+    .btn-style.back-btn
+  .header-right(ng-click='share_app()')
+    %img.share_img(src="img/share——white.png"  )
+.wrapper#wrapper.scrollable(style="padding-bottom: 30px;background: #ffffff;" )
+  .app_header.clearfix
+    %img(ng-src="{{app.logo}}" style="width:25%;float:left;" )
+    %div(style="float:left;width:75%;padding-left:5px" )
+      .app_detail_name
+        {{app.name}}
+      %div
+        %div(style="float:right;width:50%" )
+          .btn-fake
+            .btn-package(ng-show="gift_pack_btn_show" ng-click="go_gift_pack_list(app.id,app.name)")
+              礼包
+            .btn_package_disabled(ng-show="!gift_pack_btn_show")
+              礼包
+          .btn-fake
+            .btn-activity(ng-show="activity_btn_show" ng-click="go_activity_list(app.id,app.name)")
+              活动
+            .btn_activity_disabled(ng-show="!activity_btn_show" )
+              活动
+          .btn-fake(ng-show="app.price==0" )
+            .btn_price_free
+              免费
+          .btn-fake(ng-show="app.price==-1" )
+            .btn_price_limit
+              限免
+          .btn-fake(ng-show="app.price>0" )
+            .btn_price_paid
+              {{app.price}}元
+        .info_1.topics(style="background-repeat: no-repeat;background-size: 12px 12px; background-position: 0px 0px;" )
+          {{replies.length}}条
+        .info.download(style="background-repeat: no-repeat;background-size: 12px 12px; background-position: 0px 0px;" )
+          {{app.download_num}}
+          次
+        %div(style="color:#929292;width:50%;float:left" )
+          {{app.category_detail}}
+  .clearfix(ng-show = "!all_replies_show")
+    %ul.nav.nav-2tabs
+      %li#strategy_li
+        %a(ng-click='show_strategy()')
+          应用攻略
+      %li#introduce_li.active
+        %a(ng-click='show_introduce()')
+          应用介绍
+  .app_block_status(ng-switch='app_block_status' ng-show = "!all_replies_show")
+    .app_strategy(ng-switch-when='strategy')
+      .strategy_status(ng-switch='strategy_status')
+        .no_strategy(ng-switch-when='false')
+          %img(src="img/no_strategy.png" style="width:100%" )
+        .strategy(ng-switch-when='true')
+          .video_strategy(ng-show='have_video_strategy')
+            .strategy_header
+              .video_strategy_header
+                视频攻略
+            %ul.strategy_body
+              %li(ng-repeat='video_strategy in video_strategies' ng-tap='go_video_strategy_detail({{video_strategy.id}})')
+                %img.strategy_list_img(ng-src="{{video_strategy.list_img_file_name}}" )
+                .strategy_name
+                  {{video_strategy.name.substr(0, 15)}}
+                .strategy_view_num
+                  浏览量：
+                  {{video_strategy.view_num}}
+                .strategy_updated
+                  {{video_strategy.created_at.substr(0, 10)}}
+                  {{video_strategy.created_at.substr(11,5)}}
+          .text_strategy(ng-show='have_text_strategy')
+            .strategy_header
+              .text_strategy_header
+                图文攻略
+            %ul.strategy_body_1
+              %li(ng-repeat='text_strategy in text_strategies' ng-tap='go_text_strategy_detail({{text_strategy.id}})')
+                .strategy_name_1
+                  {{text_strategy.name.substr(0, 15)}}
+                .strategy_view_num_1
+                  浏览量：
+                  {{text_strategy.view_num}}
+                .strategy_updated_1
+                  {{text_strategy.created_at.substr(0, 10)}}
+                  {{text_strategy.created_at.substr(11,5)}}
+    .app_introduce(ng-switch-when='introduce')
+      .app_detail_list_header
+        %img.s-20(src="img/video.png" )
+        %font.tag_name
+          视频介绍
+      .clearfix(style="padding:10px 15%" )
+        #youkuplayer(style="width:100%;height:{{youku_height}}" )
+      .app_detail_list_header
+        %img.s-20(src="img/register.png" )
+        %font.tag_name
+          图文介绍
+      .app_detail_list_content.clearfix
+        .part_text#part_text
+          .figcaption
+            %span
+              %app-introduce
+          .text-right
+            %a#look_all_btn(ng-click="show_all()" style="display:none;" )
+              查看全部
+        .all_text.hidden#all_text
+          %app-introduce
+            {{app.introduce}}
+          .text-right
+            %a(ng-click='show_part()')
+              收起
+      .app_detail_list_content.clearfix
+        %ul(style="list-style:none;margin:0 -3%" )
+          %li.app_photo(ng-repeat='app_photo_url in app_photo_urls' )
+            %img(ng-src="{{app_photo_url}}")
+  .app_detail_list_header(ng-show="app_block_status == 'introduce' ")
+    %img.s-20(src="img/topic.png" )
+    %font.tag_name
+      用户评论
+    .margin-reply
+    .clearfix(ng-show="app_block_status == 'introduce' ")
+      .replies(ng-repeat="reply in replies | limitTo:reply_limit")
+        .topic-created-at
+          {{parse_date(reply.created_at)}}
+        %img.replier_logo(ng-src="{{reply.replier.logo || 'img/default_logo_user.png'}}")
+        .reply_body
+          .reply_name
+            {{reply.replier.nickname}}
+          .reply_content
+            {{reply.reply_body}}
+    %form.new-topic-form
+      %a.btn-style.btn-2.btn-sub-topic.more-btn(ng-click="show_all_replies()" ng-show = "!all_replies_show && replies.length > 3 ")
+        更多用户评论 >>
+      %ng-custom-textrea.input-full( placeholder="评论内容" ng-model="reply_body")
+      %p(class="label-warning" ng-show="has_err") 请填写完整
+      %a.btn-style.btn-2.btn-sub-topic(ng-click="sub_reply()")
+        发布评论
+%footer.footer_download
+  .btn-style.btn-2(ng-click="download_app()" )
+    %img.s-20(src="img/downloadAPP.PNG" )
+    下载应用
+.modal.fade#app_detail_modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content(style="height:150px" )
+      .modal-body(style="padding:0" )
+        %button(class="close modal_close" data-dismiss="modal") &times;
+        %br
+        .text-center
+          %h5 请选择版本进行下载
+        %br
+        .save_confirm(ng-show="downloaded_confirm")
+          已下载
+        .cursor-pointer.apk_switch(ng-switch="apk_status" )
+          .apk_load#apk_btn(ng-switch-when="true" ng-tap='download_app_file("#apk_a")')
+            %img.download_img(src="img/android.png" style="margin-top:-5px" )
+            安卓版下载
+          .apk_load_disabled(ng-switch-when='false')
+            %img.download_img(src="img/android.png" )
+            安卓版下载
+        %a#apk_a(href="{{apk_url}}" style="display:none" )
+        .ipa_switch(ng-switch='ipa_status' )
+          .ipa_load#ipa_btn(ng-switch-when='true' ng-tap='download_app_file("#ipa_a")')
+            %img.download_img(src="img/apple.png" style="margin-top:-5px" )
+            iPhone版下载
+          .ipa_load_disabled(ng-switch-when='false')
+            %img.download_img(src="img/apple.png" )
+            iPhone版下载
+        %a#ipa_a(href="{{ipa_url}}" style="display:none" )

@@ -1,0 +1,22 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/msg_page.css")
+%header
+  %p 我的消息
+  .header-left(ng-tap="go_back()")
+    .btn-style.back-btn
+.wrapper#wrapper.msg-list.scrollable.no-footer
+  .msg-container(ng-repeat="message in messages | orderBy:-id" ng-tap = "go_to_msg_detail(message)")
+    .msg-content
+      .msg-sender-icon
+        %img.img-sender(ng-src="{{message.sender.logo}}")
+      .text-container
+        .msg-title
+          {{message.sender.nickname}}
+        .topic-body
+          {{message.content}}
+        .msg-date
+          {{parse_date(message.created_at)}}
+    .msg-info
+      .topic-owner
+        %p.gray.no-margin
+          {{message.title}}

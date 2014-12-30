@@ -1,0 +1,97 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/all_gift_packs_activities.css")
+
+%header
+  %p 礼包
+  .header-left(ng-tap="go_home()")
+    .btn-style.home-btn
+
+.wrapper#wrapper.infinite-scroll.scrollable(infinite-scroll='all_gift_pack_activity_list.nextPage()' infinite-scroll-disabled='all_gift_pack_activity_list.busy' infinite-scroll-distance='1')
+  .pagewrap(style="{{ad_height}}" )
+    #fullscreen.pageblock
+      .slider#slides
+        .slide(ng-repeat='ad in ads' ng-click='open_ad_link(ad.ad_link)' id='{{ad.id}}')
+          %img(ng-src='{{ad.image.url}}' style="height: 100%; top: 0;")
+          .ad-desc
+            %p.ad-desc-p
+              {{ad.describe}}
+  %div(id="timeline" timelinejs)
+    %ul#issues.gift-pack-activity-list-ul.no-margin
+      %li.gift-pack-activity-list-li(ng-class="{'margin-top':gift_pack_activity.created_at != all_gift_pack_activity_list.listData[$index-1].created_at}"
+       id="{{gift_pack_activity.created_at}}" ng-repeat='gift_pack_activity in all_gift_pack_activity_list.listData' ng-click='go_detail($index)')
+        %div(ng-switch = "gift_pack_activity.category")
+          .row.no-margin(ng-switch-when="gift_pack")
+            %img.gift-pack-activity-list-img.col-xs-2.no-padding(ng-src="{{gift_pack_activity.app_logo}}")
+            .col-xs-8.no-padding
+              .row.no-margin
+                %h5.gift-pack-activity-list-name
+                  {{gift_pack_activity.name}}
+              .row.no-margin
+                %h5.gift-pack-activity-list-views
+                  {{gift_pack_activity.gift_pack_type}}
+              .row.no-margin
+                %h5.gift-pack-activity-list-views
+                  剩余：{{gift_pack_activity.surplus}}/{{gift_pack_activity.amount}}
+                  &nbsp;有效期：{{gift_pack_activity.applicable_time}}
+            .col-xs-2.no-padding.gift-pack-activity-list-a
+              %div( ng-show="gift_pack_activity.surplus>0 && gift_pack_activity.user_fetched_status==0")
+                %a(ng-tap="go_sort_gift_pack_activity('no_fetched')" style="color:#d9434e" )
+                  未领取>
+              %div(ng-show="gift_pack_activity.surplus>0 && gift_pack_activity.user_fetched_status==1")
+                %a(ng-tap="go_sort_gift_pack_activity('has_fetched')")
+                  已领取>
+              %div(ng-show="gift_pack_activity.surplus == 0")
+                %a(ng-tap="go_sort_gift_pack_activity('fetched_over')" style="color:darkgray")
+                  已领完>
+
+          .row.no-margin(ng-switch-when="activity")
+            %img.gift-pack-activity-list-img.col-xs-2.no-padding(ng-src="{{gift_pack_activity.app_logo}}" )
+            .col-xs-8.no-padding
+              .row.no-margin
+                %h5.gift-pack-activity-list-name
+                  {{gift_pack_activity.name}}
+              .row.no-margin
+                %h5.gift-pack-activity-list-views
+                  {{gift_pack_activity.gift_pack_type}}
+              .row.no-margin
+                %h5.gift-pack-activity-list-views
+                  活动时间：{{gift_pack_activity.activity_time}}
+            .col-xs-2.no-padding.gift-pack-activity-list-a
+              %div( ng-show="gift_pack_activity.overdue_status==0 && gift_pack_activity.user_joined_status==0")
+                %a(ng-tap="go_sort_gift_pack_activity('no_joined')" style="color:#d9434e")
+                  未参加>
+              %div(ng-show="gift_pack_activity.overdue_status==0 && gift_pack_activity.user_joined_status==1")
+                %a(ng-tap="go_sort_gift_pack_activity('has_joined')")
+                  已参加>
+              %div(ng-show="gift_pack_activity.overdue_status==1" )
+                %a(ng-tap="go_sort_gift_pack_activity('overdue')" style="color:darkgray")
+                  已过期>
+      .loading-data(ng-show="all_gift_pack_activity_list.listData.length!=all_gift_pack_activity_list.listData[0].all_length && all_gift_pack_activity_list.loading")
+        Loading data...
+
+    %ul#dates
+      %li( ng-repeat='gift_pack_activity in all_gift_pack_activity_list.listData'
+      ng-class="{'date-li-show' : gift_pack_activity.created_at != all_gift_pack_activity_list.listData[$index-1].created_at}")
+        %a
+          %div(ng-show="gift_pack_activity.created_at != all_gift_pack_activity_list.listData[$index-1].created_at")
+            %span.time-arrow
+              {{gift_pack_activity.created_at}}
+      %li.height-40
+
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li
+      %a(ng-tap="go_to_page('/video_list/belle')")
+        美女视频
+    %li.active
+      %a
+        礼包
+    %li
+      %a(ng-tap="go_to_page('/bbs/1')")
+        吐槽
+    %li
+      %a(ng-tap="go_to_page('/search')")
+        搜索
+    %li
+      %a(ng-tap="go_to_page('/more')")
+        更多

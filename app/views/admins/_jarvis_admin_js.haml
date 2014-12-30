@@ -1,0 +1,106 @@
+/ ==================================================
+/ Placed at the end of the document so the pages load faster
+/ Link to Google CDN's jQuery + jQueryUI; fall back to local
+%script{:src => "/JarvisAdmin_v1.9.3/js/jquery.min.js"}
+:javascript
+  window.jQuery || document.write('<script src="/JarvisAdmin_v1.9.3/js/libs/jquery.min.js"><\/script>')
+/ OPTIONAL: Use this migrate scrpit for plugins that are not supported by jquery 1.9+
+/ DISABLED <script src="js/libs/jquery.migrate-1.0.0.min.js"></script>
+-#%script{:src => "http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/jquery-ui.min.js"}
+:javascript
+  window.jQuery.ui || document.write('<script src="/JarvisAdmin_v1.9.3/js/libs/jquery.ui.min.js"><\/script>')
+/ IMPORTANT: Jquery Touch Punch is always placed under Jquery UI
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.ui.touch-punch.min.js"}
+/ REQUIRED: Mobile responsive menu generator
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/selectnav.min.js"}
+/ REQUIRED: Datatable components
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.accordion.min.js"}
+/ REQUIRED: Toastr &amp; Jgrowl notifications
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/toastr.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.jgrowl.min.js"}
+/ REQUIRED: Sleek scroll UI
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/slimScroll.min.js"}
+/ REQUIRED: Datatable components
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.dataTables.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/DT_bootstrap.min.js"}
+/ REQUIRED: Form element skin
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.uniform.min.js"}
+:javascript
+  var ismobile = (/iphone|ipad|ipod|android|blackberry|mini|windows\sce|palm/i.test(navigator.userAgent.toLowerCase()));
+        if(!ismobile){
+
+            /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS FALSE **/
+
+            /* REQUIRED: Datatable PDF/Excel output componant */
+
+            document.write('<script src="/JarvisAdmin_v1.9.3/js/include/ZeroClipboard.min.js"><\/script>');
+            document.write('<script src="/JarvisAdmin_v1.9.3/js/include/TableTools.min.js"><\/script>');
+            document.write('<script src="/JarvisAdmin_v1.9.3/js/include/select2.min.js"><\/script>');
+            document.write('<script src="/JarvisAdmin_v1.9.3/js/include/jquery.excanvas.min.js"><\/script>');
+            document.write('<script src="/JarvisAdmin_v1.9.3/js/include/jquery.placeholder.min.js"><\/script>');
+        }else{
+
+            /** ONLY EXECUTE THESE CODES IF MOBILE DETECTION IS TRUE **/
+
+            document.write('<script src="/JarvisAdmin_v1.9.3/js/include/responsive-tables.min.js"><\/script>');
+        }
+/ REQUIRED: iButton
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.ibutton.min.js"}
+/ REQUIRED: Justgage animated charts
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/raphael.2.1.0.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/justgage.min.js"}
+/ REQUIRED: Morris Charts
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/morris.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/morris-chart-settings.js"}
+/ REQUIRED: Animated pie chart
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.easy-pie-chart.min.js"}
+/ REQUIRED: Functional Widgets
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jarvis.widget.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/mobiledevices.min.js"}
+/ DISABLED (only needed for IE7 <script src="js/include/json2.js"></script>
+/ REQUIRED: Full Calendar
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.fullcalendar.min.js"}
+/ REQUIRED: Flot Chart Engine
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.flot.cust.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.flot.resize.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.flot.tooltip.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.flot.orderBar.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.flot.fillbetween.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.flot.pie.min.js"}
+/ REQUIRED: Sparkline Charts
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.sparkline.min.js"}
+/ REQUIRED: Infinite Sliding Menu (used with inbox page)
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.inbox.slashc.sliding-menu.js"}
+/ REQUIRED: Form validation plugin
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.validate.min.js"}
+/ REQUIRED: Progress bar animation
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap-progressbar.min.js"}
+/ REQUIRED: wysihtml5 editor
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/wysihtml5-0.3.0.min.js"}
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap-wysihtml5.min.js"}
+/ REQUIRED: Masked Input
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/jquery.maskedinput.min.js"}
+/ REQUIRED: Bootstrap Date Picker
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap-datepicker.min.js"}
+/ REQUIRED: Bootstrap Wizard
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap.wizard.min.js"}
+/ REQUIRED: Bootstrap Color Picker
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap-colorpicker.min.js"}
+/ REQUIRED: Bootstrap Time Picker
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap-timepicker.min.js"}
+/ REQUIRED: Bootstrap Prompt
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootbox.min.js"}
+/ REQUIRED: Bootstrap engine
+%script{:src => "/JarvisAdmin_v1.9.3/js/include/bootstrap.min.js"}
+/ DO NOT REMOVE: Theme Config file
+%script{:src => "/JarvisAdmin_v1.9.3/js/config.js"}
+/ d3 library placed at the bottom for better performance
+/ DISABLED  <script src="js/include/d3.v3.min.js"></script>
+/ DISABLED  <script src="js/include/adv_charts/d3-chart-1.js"></script>
+/ DISABLED  <script src="js/include/adv_charts/d3-chart-2.js"></script>
+/ Google Geo Chart
+/ DISABLED <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
+/ DISABLED <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+/ DISABLED <script src="js/include/adv_charts/geochart.js"></script>
+/ end scripts

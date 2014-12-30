@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @topic.title %>
+</p>
+
+<p>
+  <strong>Body:</strong>
+  <%= @topic.body %>
+</p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @topic.owner %>
+</p>
+
+<p>
+  <strong>Last replyer:</strong>
+  <%= @topic.last_replyer %>
+</p>
+
+<p>
+  <strong>Total replies:</strong>
+  <%= @topic.total_replies %>
+</p>
+
+<%= link_to 'Edit', edit_topic_path(@topic) %> |
+<%= link_to 'Back', topics_path %>

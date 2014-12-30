@@ -1,0 +1,46 @@
+.fake_tencent{
+    font-size: 10px;
+    height: 25px;
+    float: left;
+    margin: 0 3%;
+    width: 44%;
+    border: 2px solid #dbdbdb;
+    border-radius: 5px;
+    background-color: #ededed;
+    color: #585757;
+}
+.fake_third_img{
+    padding-top: 3px;
+    height: 23px;
+    float: left;
+    width: 25%;
+    border-right: 1px solid #d0cfcf;
+}
+
+.fake_sina{
+    font-size: 10px;
+    height: 25px;
+    float: left;
+    margin: 0 3%;
+    width: 44%;
+    border: 2px solid #dbdbdb;
+    border-radius: 5px;
+    background-color: #ededed;
+    color: #585757;
+}
+
+.fake_third_text{
+    padding: 4px 0;
+    float: left;
+    text-align: center;
+    width: 75%;
+}
+.register_err{
+    color: #d9434e;
+}
+.login_finger_bang{
+    width: 100%;
+    margin-top: 6px;
+    background-color: #d9434e !important;
+    color: #ffffff !important;
+}

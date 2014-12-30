@@ -1,0 +1,67 @@
+%script(lang="javascript" src="/javascripts/admin/video_info.js")
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content.width_100( style="margin:0" )
+    %h1 视频管理
+    %a.cursor-pointer(href="javascript:back_to_videos_manage()" )
+      视频管理>>
+    添加视频
+    %br
+    %br
+    = form_tag('/admins/update_video_info', multipart: true, id: 'video_form') do
+      .row.no-margin
+        %p.col-xs-3.text-center.video-p
+          名称：
+        = text_field_tag 'video[name]', @video.name, :class=>'col-xs-4 height_34'
+        = check_box_tag  'video[position][]', '美女视频', @video.position && @video.position.include?('美女视频'), :id=>'belle',  :class=>'col-xs-1 video-checkbox'
+        = label_tag :belle, '美女视频', :class=>'col-xs-2 padding-0 video-label'
+        = check_box_tag  'video[position][]', '热播视频', @video.position && @video.position.include?('热播视频'), :id=>'hot',     :class=>'col-xs-1 video-checkbox'
+        = label_tag :hot, '热播视频', :class=>'col-xs-2 padding-0 video-label'
+        = check_box_tag  'video[position][]', '视频攻略', @video.position && @video.position.include?('视频攻略'), :id=>'raiders', :class=>'col-xs-1 video-checkbox'
+        = label_tag :raiders, '视频攻略', :class=>'col-xs-2 padding-0 video-label'
+        = check_box_tag  'video[is_recommend]', true, @video.is_recommend, :id=>'is_recommend', :class=>'col-xs-1 video-checkbox'
+        = label_tag :is_recommend, '首页推荐', :class=>'col-xs-2 padding-0 video-label'
+      .row.no-margin
+        %p.col-xs-3.video-p
+          视频地址：
+        = text_field_tag 'video[video_link]', @video.video_link, :class=>'col-xs-4 height_34'
+      .row.no-margin
+        %p.col-xs-3.video-p
+          上传视频在列表中的显示图：
+        = file_field_tag 'video[list_img]', :accept=>'image/png,image/gif,image/jpeg', :style=>'display:none', :id=>'list_img'
+        = text_field_tag 'video[list_img_local_path]', @video.list_img_local_path, :class=>'col-xs-4 height_34'
+        = label_tag :list_img, '浏览', :class=>'btn col-xs-1 ad-label-btn'
+      .row.no-margin
+        %p.col-xs-3.video-p
+          上传视频封面图：
+        = file_field_tag 'video[cover]', :accept=>'image/png,image/gif,image/jpeg', :style=>'display:none', :id=>'cover'
+        = text_field_tag 'video[cover_local_path]', @video.cover_local_path, :class=>'col-xs-4 height_34'
+        = label_tag :cover, '浏览', :class=>'btn col-xs-1 ad-label-btn'
+      .row.no-margin
+        %p.col-xs-3.video-p
+          视频介绍：
+        = text_area_tag 'video[intro]', @video.intro, :class=>'col-xs-8 input-area padding-0'
+      .row.no-margin#video_img_row
+        %p.col-xs-3.video-p
+          上传图片：
+        = file_field_tag 'video[video_imgs_attributes][][img]', :accept=>'image/png,image/gif,image/jpeg', :style=>'display:none', :id=>'video_img_1'
+        = text_field_tag :video_img_local_path, params[:video_img_local_path], :class=>'col-xs-4 height_34'
+        = label_tag :video_img_1, '浏览', :id => 'video_img_label', :class=>'btn col-xs-1 ad-label-btn'
+      %br
+      .row.no-margin#photo_num
+        .col-xs-1#photo_files
+        #photo_reader.col-xs-11
+          - if @video.video_imgs
+            - @video.video_imgs.each do |video_img|
+              .col-xs-2(id='show_#{video_img.id}')
+                %img.app_photo_large(src='#{video_img.img.url}' name='show_#{video_img.id}')
+                  %a.app_detail_photo(onclick='delete_loaded_video_img(this)' rel ='show_#{video_img.id}') ×
+      %br
+      %br
+      .row.ads-btn-margin
+        .row.no-margin.text-center
+          %p.post-tip#video_post_tips
+    .text-right.col-xs-6
+      = submit_tag '保存', :class=>'btn-local', :onclick=>'update_video()'
+    .col-xs-6
+      = submit_tag '取消', :class=> 'btn-local', :onclick=>'refresh_page("/admins/video_info")'

@@ -1,0 +1,34 @@
+.login_finger_bang{
+    width: 100%;
+    margin-top: 6px;
+    background-color: #d9434e !important;
+    color: #ffffff !important;
+}
+
+.integral_rules_main_div{
+    padding: 16px 16px 16px 16px;
+}
+
+.integral_rules_icon_img{
+    width:20px;
+    height:20px;
+}
+.integral_rules_icon_col{
+    padding:0 0;
+    text-align: right;
+}
+.no-margin{
+    margin: 0 0;
+}
+.integral_rules_row{
+    padding: 8px 0;
+}
+.padding-bottom-10{
+    padding-bottom: 10px;
+    padding-left: 0;
+    padding-right: 0;
+}
+.padding-right-0{
+    padding-left:10px;
+    padding-right:0;
+}

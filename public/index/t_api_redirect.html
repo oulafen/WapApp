@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>指头帮官网</title>
+    <script type="text/javascript" src="js/openjs.js"></script>
+</head>
+<body>
+
+<button onclick="login_with_tx_wb()">登录</button>
+<script type="text/javascript">
+//    (function () {
+        T.init({
+//            callbackurl:"https://wap.handx2.com/index/t_api_redirect.html",
+            appkey: "801527396",
+//            samewindow:true
+        })
+
+//        document.getElementById("login_btn").onclick = login_with_tx_wb;
+//                 alert()
+        function login_with_tx_wb() {
+            T.logout();
+            T.login(function () {
+                alert(JSON.stringify(arguments));
+            }, function (loginError) {
+                alert(loginError.message);
+            });
+        }
+//    })();
+//    String.prototype.GetValue= function(parm) {
+//        var reg = new RegExp("(^|&)"+ parm +"=([^&]*)(&|$)");
+//        var r = this.substr(this.indexOf("\?")+1).match(reg);
+//        if (r!=null) return unescape(r[2]); return null;
+//    }
+//    var url = location.href.replace("#","?");
+//    var WBINFO = {};
+//    WBINFO.access_token = url.GetValue("access_token");
+//    WBINFO.expires_in = url.GetValue("expires_in");
+//    WBINFO.openid = url.GetValue("openid");
+//    WBINFO.openkey = url.GetValue("openkey");
+//    WBINFO.refresh_token= url.GetValue("refresh_token");
+//    WBINFO.state= url.GetValue("state");
+//    WBINFO.name= url.GetValue("name");
+//    WBINFO.nick= url.GetValue("nick");
+//    localStorage.tencent = JSON.stringify(WBINFO);
+//    window.close()
+</script>
+</body>
+</html>

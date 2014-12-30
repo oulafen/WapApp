@@ -1,0 +1,65 @@
+%script(lang="javascript"  src="/javascripts/admin/all_gift_pack.js")
+%body
+  =render 'admins/jarvis_admin_css'
+  #loaderModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "loaderLabel", "data-backdrop" => "static", :role => "dialog", :style => "overflow: hidden; display: none;"}
+    .spinner
+      .rect1
+      .rect2
+      .rect3
+      .rect4
+      .rect5
+      %p{:style => "width:200%;margin-left:-50%;color:#b4b4b4"} 上传中...
+  #page-content(style="margin:0;margin-right:15px !important" )
+    %a.cursor-pointer(href="javascript:back_to_all_app()" )
+      应用管理>>
+    %font
+      =@app.name
+    %br
+    %br
+    %br
+    .row
+      .col-xs-2
+        %button.btn#gift_pack_excel_btn
+          上传礼包数据
+        =form_for :gift_pack_excel  do |f|
+          =f.file_field :excel_sheet, :id=>'gift_pack_excel_input', :style=>"display:none"
+          =f.submit '保存', :id=>'submit_excel', :style=>"display:none"
+      .col-xs-2
+        =link_to '下载数据格式模版', down_gift_pack_excel_file_path ,:class => 'btn'
+      .col-xs-2
+        =link_to '手动添加礼包', add_gift_pack_path,:class => 'btn'
+
+    %br
+    .row
+      %table.table
+        %thead
+          %tr
+            %td.text_center
+              序号
+            %td.text_center
+              名称
+            %td.text_center
+              礼包有效期
+            %td.text_center
+              上传时间
+            %td.text_center
+              操作
+        %tbody
+          -num=0
+          -@gift_packs.each do |gift_pack|
+            -num +=1
+            %tr
+              %td.text_center
+                =num
+              %td.text_center
+                =gift_pack["name"]
+              %td.text_center
+                =gift_pack["applicable_time"]
+              %td.text_center
+                =gift_pack["created_at"]
+              %td.text_center
+                =link_to '详情', gift_pack_detail_path(:id=>gift_pack['id'])
+                =link_to '删除', delete_gift_pack_path(:id=>gift_pack['id']),method:'delete',data:{:confirm=>'确定删除该礼包？'}
+      = will_paginate @gift_packs, :previous_label => "",:next_label=> ""
+
+

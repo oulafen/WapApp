@@ -1,0 +1,10 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content.width_100( style="margin:0" )
+    %h1 发帖
+    %a.cursor-pointer(href="/admins/bbs_manage" )
+      吐槽模块管理>>
+    发帖
+    %br
+    =render 'admins/admin_new_topic_form'
+

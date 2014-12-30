@@ -1,0 +1,40 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0;margin-right:15px !important" )
+    %h1#page-header 应用管理
+    %a.cursor-pointer(href="javascript:back_to_all_app()" )
+      应用管理>>
+    %font
+      =@app.name
+    %br
+    %br
+    =link_to '添加攻略', strategy_path(:app_id=>@app[:id]),:class => 'btn'
+    %br
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            名称
+          %td
+            发布时间
+          %td
+            操作
+      %tbody
+        -num=0
+        -@strategies.each do |strategy|
+          -num +=1
+          %tr
+            %td
+              =num
+            %td
+              =strategy["name"]
+            %td
+              =strategy["updated_at"]
+            %td
+              =link_to '详情', strategy_detail_path(:id=>strategy['id'])
+              =link_to '删除', strategy_path(:id=>strategy['id']),method:'delete',data:{:confirm=>'确定删除该攻略？'}
+    = will_paginate @strategies, :previous_label => "",:next_label=> ""
+
+

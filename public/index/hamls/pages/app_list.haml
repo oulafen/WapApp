@@ -1,0 +1,67 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/app_list.css")
+%header
+  %p
+    {{type}}
+  .header-left(ng-Tap = "back_to_home()")
+    %div.btn-style.home-btn
+.wrapper#wrapper.infinite-scroll.scrollable(infinite-scroll='app_list.nextPage()' infinite-scroll-disabled='app_list.busy' infinite-scroll-distance='1')
+  %div(id="timeline" timelinejs)
+    %ul#issues.app-list-ul.no-margin
+      %li.app-list-li(id="{{app.created_at}}" ng-class="{'margin-top':app.created_at != app_list.listData[$index-1].created_at}"
+       ng-repeat='app in app_list.listData' ng-click='go_app_detail(app.id,app.video_link)')
+        .row.no-margin
+          %img.app-list-img.col-xs-2.no-padding(ng-src="{{app.logo}}")
+          .col-xs-7.no-padding
+            .row.no-margin
+              %h5.app-list-name
+                {{app.name}}
+            .row.no-margin
+              .padding_left_10
+                .info_1.topics(style="background-repeat: no-repeat;background-size: 10px 10px; background-position: 1px 4px;" )
+                  {{app.reply_num}}条
+                .info.download(style="background-repeat: no-repeat;background-size: 10px 10px; background-position: 1px 4px;" )
+                  {{app.download_num}}次
+            .row.no-margin
+              %h5.app-list-intro
+                {{app.introduce}}
+          .col-xs-2.no-padding
+            .btn_price_free(ng-show="app.price==0")
+              免费
+            .btn_price_limit(ng-show="app.price==-1")
+              限免
+            .btn_price_paid(ng-show="app.price>0")
+              {{app.price}}元
+      .loading-data(ng-show="app_list.listData.length!=app_list.listData[0].all_length && app_list.loading ")
+        Loading data...
+
+    %ul#dates
+      %li( ng-repeat='app in app_list.listData' ng-class="{'date-li-show' : app.created_at != app_list.listData[$index-1].created_at}")
+        %a
+          %div(ng-show="app.created_at != app_list.listData[$index-1].created_at")
+            %span.time-arrow
+              {{app.created_at}}
+      %li.height-50
+
+
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li
+      %a(ng-tap="go_to_page('/video_list/belle')")
+        美女视频
+    %li
+      %a(ng-tap="go_to_page('/all_gift_packs')")
+        礼包
+    %li
+      %a(ng-tap="go_to_page('/bbs/1')")
+        吐槽
+    %li
+      %a(ng-tap="go_to_page('/search')")
+        搜索
+    %li
+      %a(ng-tap="go_to_page('/more')")
+        更多
+
+
+
+

@@ -1,0 +1,39 @@
+%br
+%br
+%form(method="post" action="/admins/new_sys_msg" name="admin_new_topic")
+  .row.font_18px
+    .text-right.col-xs-5
+      标题:
+    .col-xs-4
+      %input.form-control(name="title" )
+    .col-xs-3.red_color
+      *
+  %br
+  .row.font_18px
+    .text-right.col-xs-5
+      用户:
+    .col-xs-4
+      %select.form-control(name="to_user" )
+        %option(value="-2")
+          所有用户
+        %option(value="-1")
+          未注册用户
+        %option(value="0")
+          注册用户
+  %br
+  .row.font_18px
+    .text-right.col-xs-5
+      内容:
+    .col-xs-4
+      %textarea.form-control(name="content" )
+    .col-xs-3.red_color
+      *
+  %br
+  .row
+    .col-xs-5
+    .col-xs-2
+      %button.btn-local_2
+        确定
+    .col-xs-2
+      %button.btn-local_1(type="button" onclick="javascript:history.back();" )
+        取消

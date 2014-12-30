@@ -1,0 +1,45 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 应用信息管理
+    %a{:href =>'/admins/new_app'}
+      添加新应用
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            应用名称
+          %td
+            类别
+          %td
+            礼包&活动
+          %td
+            上传时间
+          %td
+            操作
+      %tbody
+        -num=0
+        -@apps.each do |app|
+          -num +=1
+          %tr
+            %td
+              =num
+            %td
+              =app["name"]
+            %td
+              =app["category"]
+            %td
+              -if app["gift_pack"]
+                有礼包
+              -if app["activity"]
+                有活动
+            %td
+              =app["created_at"]
+            %td
+              %a(href="javascript:show_app_info(#{app['id']})" )
+                查看
+              =link_to '删除', app_session_path(:id=>app['id']),method:'delete',data:{:confirm=>'确定删除该应用？'}
+
+    = will_paginate @apps_page, :previous_label => "",:next_label=> ""

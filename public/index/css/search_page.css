@@ -1,0 +1,318 @@
+.wrapper {
+    float: left;
+}
+.content{
+    float: left;
+    width: 100%;
+    padding-top: 16px;
+    padding-left: 8px;
+    padding-right: 8px;
+    padding-bottom: 8px;
+}
+.list {
+    padding-top: 0px;
+    top: 56px;
+    bottom: 0px;
+}
+
+
+.search-form {
+    width: 100%;
+    float: left;
+}
+
+.search-btn {
+    position: relative;
+    float: right;
+    top: 12px;
+    right: 0px;
+    margin-top: -12px;
+    width: 20%;
+    height: 30px;
+    display: inline-block;
+    border-radius: 4px;
+    background-color: #d9434e;
+    text-align: center;
+    padding-top: 4px;
+    color: #ffffff;
+}
+
+.input-search {
+    float: left;
+    display: inline-block;
+    text-indent: 24px;
+    background-image: url("../img/search_label.png");
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 4px 4px;
+    width: 78%;
+}
+
+.result-item {
+    margin-top: 2px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    width: 100%;
+    height: 60px;
+    float: left;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+
+.result-icon {
+    float: left;
+    position: relative;
+    border-radius: 4px;
+    height: 56px;
+    width: 56px;
+    width: 56px;
+}
+
+.app-content {
+    position: relative;
+    float: left;
+    padding-left: 12px;
+    height: 54px;
+    width: 60%;
+}
+.price_btn{
+    float: right;
+}
+.result-tile {
+    position: relative;
+    top: 6px;
+    font-size: 10px;
+    margin-bottom: 0px;
+    position: relative;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.info {
+    background-size: 10px 10px;
+    background-position: 1px 4px;
+    background-repeat: no-repeat;
+    text-indent: 16px;
+    display: inline-block;
+    color: #d9434e;
+    font-size: 10px;
+    padding: 0 !important;
+    height: 100%
+}
+
+.desc {
+    color: #9a9a9a;
+    font-size: 8px;
+    position: relative;
+    top: 0px;
+    overflow: hidden;
+    height: 20px;
+    text-overflow: ellipsis;
+    margin-bottom: 0px;
+}
+
+.video-desc {
+    top: 10px;
+}
+
+.read-times{
+    top: 10px;
+    height: 10px    ;
+}
+.btn-price {
+
+    float: right;
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: #b5b4b4;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+.app-check-btn:active {
+    background-color: #8a8a8a;
+}
+
+.enter-btn {
+    background-image: url("../img/enter.png");
+    background-size: 10px;
+    background-position: 20px 2px;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 15%;
+    height: 20px;
+    top: 20px;
+}
+.app-list-img {
+    /*margin-top: 5px;*/
+    width:60px !important;
+    height:60px !important;
+}
+
+.app-list-name {
+    font-size: 16px;
+    padding: 0 0 0 10px !important;
+    /*margin: 6px 0 0 0 !important;*/
+    color: #000000 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-list-intro {
+    font-size: 12px;
+    padding: 0 0 0 10px !important;
+    color: #000000 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.info {
+    background-size: 10px 10px;
+    background-position: 1px 4px;
+    background-repeat: no-repeat;
+    text-indent: 16px;
+    display: inline-block;
+    color: #d9434e;
+    font-size: 10px;
+    padding: 0 !important;
+    height: 100%
+}
+.info_1 {
+    background-size: 10px 10px;
+    background-position: 0px 4px;
+    background-repeat: no-repeat;
+    text-indent: 16px;
+    display: inline-block;
+    color: #d9434e;
+    font-size: 10px;
+    padding: 0 !important;
+    height: 100%
+}
+.padding_left_10{
+    padding-left: 10px;
+    margin-top: -6px;
+}
+.btn_price_free {
+    margin-right: 10px;
+    width: 40px;
+    float: right;
+    padding: 2px 4px;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #6bc04b;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.app-list-li {
+    height: 80px;
+    width: 100%;
+    padding: 10px 2%;
+    border-radius: 6px;
+    background-color: #ffffff;
+    list-style: none;
+    display: inline-block;
+}
+.no-padding {
+    padding: 0;
+}
+.search_list{
+    margin: 0 10px;
+}
+.btn_price_limit {
+    margin-right: 10px;
+    width: 40px;
+    float: right;
+    padding: 2px 4px;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #ed3b47;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+.btn_price_paid {
+    margin-right: 10px;
+    width: 40px;
+    float: right;
+    padding: 2px 4px;
+    margin-top: 20px;
+    color: #ffffff;
+    background-color: #5499db;
+    font-size: 10px;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+}
+
+.video-list-li {
+    height: 80px;
+    width: 100%;
+    padding: 10px 2%;
+    border-radius: 6px;
+    background-color: #ffffff;
+    list-style: none;
+    display: inline-block;
+}
+
+.video-list-img {
+    width:60px !important;
+    height:60px !important;
+}
+
+.no-padding {
+    padding: 0;
+}
+
+.video-list-name {
+    font-size: 16px;
+    padding: 0 0 0 10px !important;
+    margin: 6px 0 0 0 !important;
+    color: #000000 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.video-list-intro {
+    font-size: 12px;
+    padding: 0 0 0 10px !important;
+    margin: 6px 0 0 0 !important;
+    color: #000000 !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.video-list-views {
+    padding: 0 0 0 10px !important;
+    margin: 6px 0 0 0 !important;
+    font-size: 10px;
+    color: #8c8a8a;
+}
+.video-list-a {
+    position: absolute;
+    right: 0;
+    margin-top: 20px !important;
+    text-align: center;
+}
+
+.video-list-a a {
+    color: darkgray;
+}

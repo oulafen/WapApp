@@ -1,0 +1,68 @@
+%script(lang="javascript" src="/javascripts/admin/ads_manage.js")
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content.no-margin
+    %h1#page-header
+      = @header_title + '广告位图片管理'
+    %br
+    = form_tag('/admins/uploader_ads', multipart: true, id: 'ad_form') do
+      -if @header_title=='弹窗'
+        .row.no-margin
+          %p.col-xs-1.text-center.ad-p(id='img_num_0' )
+            = '图片：'
+          = file_field_tag 'image_0', :style=>'display:none', :id=>'0'
+          = text_field_tag 'image_local_path_0', params['image_local_path_0'], :class=>'col-xs-3 ad-text-desc', :id=>'img_local_path_0'
+          %label.btn.col-xs-1.ad-label-btn(for='0')
+            上传图片
+        = text_field_tag :img_count, params[:img_count], :style=>'display:none', :id=>'img_count'
+        = text_field_tag :position, params[:position], :style=>'display:none', :id=>'position'
+        %br
+        .row.no-margin#photo_num
+          .col-xs-1#photo_files
+          #photo_reader.col-xs-11
+            - if @ads
+              - @ads.each do |ad|
+                .col-xs-2(id='show_#{ad.index}')
+                  %img.app_photo_large(src='#{ad.image.url}' name='ad_#{ad.index}')
+                    %a.app_detail_photo(onclick='delete_loaded_ad_img(this)' id='#{ad.id}' rel ='show_#{ad.index}') ×
+                    %p.text-center.img-font
+                      = '图片：'
+
+      -if @header_title!='弹窗'
+        - for i in 0...@ad_cn_num.length
+          .row.no-margin
+            %p.col-xs-1.text-center.ad-p(id='img_num_#{i}' )
+              = '图片' + @ad_cn_num[i] + '：'
+            = file_field_tag 'image_' + i.to_s, :style=>'display:none', :id=>i.to_s
+            = text_field_tag 'image_local_path_' + i.to_s, params['image_local_path_' + i.to_s], :class=>'col-xs-3 ad-text-desc', :id=>'img_local_path_' + i.to_s
+            %label.btn.col-xs-1.ad-label-btn(for='#{i}')
+              上传图片
+            %p.col-xs-1.text-center.ad-p
+              = '图片' + @ad_cn_num[i] + '链接' + '：'
+            = text_field_tag 'ad_link_' + i.to_s, params['ad_link_' + i.to_s], :class=>'col-xs-3 ad-input-text'
+          .row.no-margin
+            %p.col-xs-1.text-center.ad-p
+              文字描述：
+            = text_field_tag 'describe_' + i.to_s, params['describe_' + i.to_s], :class=>'col-xs-10 ad-text-desc'
+        = text_field_tag :img_count, params[:img_count], :style=>'display:none', :id=>'img_count'
+        = text_field_tag :position, params[:position], :style=>'display:none', :id=>'position'
+        %br
+        .row.no-margin#photo_num
+          .col-xs-1#photo_files
+          #photo_reader.col-xs-11
+            - if @ads
+              - @ads.each do |ad|
+                .col-xs-2(id='show_#{ad.index}')
+                  %img.app_photo_large(src='#{ad.image.url}' name='ad_#{ad.index}')
+                    %a.app_detail_photo(onclick='delete_loaded_ad_img(this)' id='#{ad.id}' rel ='show_#{ad.index}') ×
+                    %p.text-center.img-font
+                      = '图片' + @ad_cn_num[ad.index] + '：'
+      %br
+      %br
+      .row.ads-btn-margin
+        .row.no-margin.text-center
+          %p.post-tip#ad_post_tips
+    .text-right.col-xs-6
+      = submit_tag '保存', :class=>'btn-local', :onclick=>'submit_ad_form()'
+    .col-xs-6
+      = submit_tag '取消', :class=> 'btn-local', :onclick=>'refresh_page("/admins/ads_position_manage/' + params[:position] + '")'

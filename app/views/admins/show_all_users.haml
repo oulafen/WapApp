@@ -1,0 +1,47 @@
+%body.height-auto
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 注册用户管理
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            用户名
+          %td
+            邮箱
+          %td
+            积分
+          %td
+            微信
+          %td
+            新浪微博
+          %td
+            腾讯微博
+          %td
+            操作
+      %tbody
+        -num=0
+        -@users.each do |user|
+          -num +=1
+          %tr
+            %td
+              =num
+            %td
+              =user[:nickname]
+            %td
+              =user[:mailbox]
+            %td
+              =user[:integral]
+            %td
+              =user[:weixin]
+            %td
+              =user[:sina_weibo]
+            %td
+              =user[:tencent_weibo]
+            %td
+              =link_to '删除', delete_user_path(:id=>user[:id]),method:'delete',data:{:confirm=>'确定删除该用户？'}
+
+    = will_paginate @users, :previous_label => "",:next_label=> ""
+

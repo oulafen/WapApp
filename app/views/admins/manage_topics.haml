@@ -1,0 +1,44 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 吐槽板块管理
+    %a{:href =>'/admins/new_topic'}
+      发帖
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            标题
+          %td
+            浏览次数
+          %td
+            回帖数
+          %td
+            发布时间
+          %td
+            操作
+      %tbody
+        -num=0
+        -@topics.each do |topic|
+          -num +=1
+          -id=topic[:id]
+          %tr
+            %td
+              =num
+            %td
+              =topic[:title]
+            %td
+              =topic[:view_num] ||0
+              次
+            %td
+              =topic[:total_replies_num]
+              条
+            %td
+              =topic[:created_at]
+            %td
+              = link_to '详情', manage_topic_replies_path(topic:topic[:id]) ,method: :get
+              = link_to '删除', topic, method: :delete, data: { confirm: '删除该吐槽?' }
+
+    = will_paginate @topics, :previous_label => "",:next_label=> ""

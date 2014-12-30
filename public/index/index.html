@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app='myApp' xmlns:wb='http://open.weibo.com/wb'>
+  <head>
+    <script charset='utf-8' src='http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3378155151' type='text/javascript'></script>
+    <script src='http://player.youku.com/jsapi'></script>
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta content='width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0' name='viewport'>
+    <meta content='yes' name='apple-mobile-web-app-capable'>
+    <meta content='black' name='apple-mobile-web-app-status-bar-style'>
+    <link href='./img/128.png' rel='shortcut icon' type='image/png'>
+    <link href='./img/128.png' rel='apple-touch-icon'>
+    <title>指头邦官网</title>
+    <!-- gen-css -->
+    <!-- manual-css -->
+    <link href='lib/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+    <link href='lib/js/angular/mobile-nav.css' rel='stylesheet' type='text/css'>
+    <link href='lib/css/bootstrapswitch-custom.css' rel='stylesheet' type='text/css'>
+    <link href='lib/css/android.css' rel='stylesheet' type='text/css'>
+    <link href='lib/icomoon/style.css' rel='stylesheet' type='text/css'>
+    <link href='css/bootstrap.css' rel='stylesheet' type='text/css'>
+    <link href='css/index.css' rel='stylesheet' type='text/css'>
+    <link href='css/img_slider.css' rel='stylesheet' type='text/css'>
+    <link href='css/user_index.css' rel='stylesheet' type='text/css'>
+    <link href='css/jquery/jquery.Jcrop.css' rel='stylesheet' type='text/css'>
+    <!-- Lib JS -->
+    <script lang='javascript' src='lib/js/jquery-2.0.0.min.js'></script>
+    <script lang='javascript' src='lib/js/angular/angular.min.js'></script>
+    <script lang='javascript' src='lib/js/angular/mobile-nav.min.js'></script>
+    <script lang='javascript' src='lib/js/zepto/zepto.js'></script>
+    <script lang='javascript' src='lib/js/underscore/underscore-min.js'></script>
+    <script lang='javascript' src='lib/js/jquery/jquery.Jcrop.js'></script>
+    <script lang='javascript' src='lib/js/jquery/jquery.timelinr.js'></script>
+    <script lang='javascript' src='lib/js/jquery/jquery.mousewheel.js'></script>
+    <script lang='javascript' src='lib/js/bootstrap/bootstrap.js'></script>
+    <script lang='javascript' src='lib/js/jt-logic.js/would.js'></script>
+    <script lang='javascript' src='lib/js/jt-logic.js/relations.js'></script>
+    <script lang='javascript' src='lib/js/jt-logic.js/conditions.js'></script>
+    <script lang='javascript' src='lib/js/jt-notify.js/notify.js'></script>
+    <script lang='javascript' src='lib/js/jquery-slider/jquery.slides.js'></script>
+    <script lang='javascript' src='lib/js/jquery-slider/backstretch.js'></script>
+    <script lang='javascript' src='lib/js/zeroclipboard/ZeroClipboard.js'></script>
+    <script src='js/controller/ActivityDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/AllGiftPacksController.js' type='text/javascript'></script>
+    <script src='js/controller/AppActivityListController.js' type='text/javascript'></script>
+    <script src='js/controller/AppDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/AppGiftPackListController.js' type='text/javascript'></script>
+    <script src='js/controller/AppListController.js' type='text/javascript'></script>
+    <script src='js/controller/BBSAboutMeController.js' type='text/javascript'></script>
+    <script src='js/controller/BBSController.js' type='text/javascript'></script>
+    <script src='js/controller/CurrentDownloadAppsController.js' type='text/javascript'></script>
+    <script src='js/controller/EmailResetPasswordController.js' type='text/javascript'></script>
+    <script src='js/controller/FeedBackController.js' type='text/javascript'></script>
+    <script src='js/controller/forget_password.js' type='text/javascript'></script>
+    <script src='js/controller/GiftPackActivityFilterList.js' type='text/javascript'></script>
+    <script src='js/controller/GiftPackDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/HomePopAdController.js' type='text/javascript'></script>
+    <script src='js/controller/IndexController.js' type='text/javascript'></script>
+    <script src='js/controller/IntegralRulesController.js' type='text/javascript'></script>
+    <script src='js/controller/LoginController.js' type='text/javascript'></script>
+    <script src='js/controller/MessagesController.js' type='text/javascript'></script>
+    <script src='js/controller/MoreController.js' type='text/javascript'></script>
+    <script src='js/controller/MyActivitiesController.js' type='text/javascript'></script>
+    <script src='js/controller/MyGiftPacksController.js' type='text/javascript'></script>
+    <script src='js/controller/PersonalCenterController.js' type='text/javascript'></script>
+    <script src='js/controller/ResetPasswordController.js' type='text/javascript'></script>
+    <script src='js/controller/SearchController.js' type='text/javascript'></script>
+    <script src='js/controller/ShareAppController.js' type='text/javascript'></script>
+    <script src='js/controller/ShareController.js' type='text/javascript'></script>
+    <script src='js/controller/SysMsgDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/TextStrategyDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/TopicDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/UserImproveInfoController.js' type='text/javascript'></script>
+    <script src='js/controller/VideoDetailController.js' type='text/javascript'></script>
+    <script src='js/controller/VideoListController.js' type='text/javascript'></script>
+    <script src='js/controller/VideoStrategyDetailController.js' type='text/javascript'></script>
+    <script src='js/exif.js' type='text/javascript'></script>
+    <script src='js/load_img.js' type='text/javascript'></script>
+    <script src='js/LocalResizeIMG.js' type='text/javascript'></script>
+    <script src='js/mobileBUGFix.mini.js' type='text/javascript'></script>
+    <script src='js/model/app.js' type='text/javascript'></script>
+    <script src='js/model/gift_pack.js' type='text/javascript'></script>
+    <script src='js/model/Message.js' type='text/javascript'></script>
+    <script src='js/model/ThirdPartUser.js' type='text/javascript'></script>
+    <script src='js/model/User.js' type='text/javascript'></script>
+    <script src='js/model/Video.js' type='text/javascript'></script>
+    <script src='js/application.js' type='text/javascript'></script>
+    <script src='js/routes.js' type='text/javascript'></script>
+  </head>
+  <body ng-controller='MainCtrl'>
+    <mobile-view></mobile-view>
+  </body>
+</html>

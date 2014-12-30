@@ -1,0 +1,46 @@
+%aside.width_20
+  .sidebar-nav-fixed
+    %ul#accordion-menu-js.menu
+      -if @is_admin
+        %li
+          %a{:href => "javascript:void(0)" ,:class=>'head'}
+            %i.icon-th-list>
+            &nbsp;&nbsp;&nbsp;&nbsp;用户管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          %ul
+            -if @is_super_admin
+              %li
+                %a{:href => 'javascript:show_iframe("all_admins")' }
+                  管理员用户
+            %li
+              %a{:href => 'javascript:show_iframe("all_editors")'} 编辑用户
+            %li
+              %a{:href => 'javascript:show_iframe("all_users")'} 注册用户
+            %li
+              %a{:href => 'javascript:show_iframe("third_party_users")'} 第三方用户
+      %li
+        %a#all_app{:href => 'javascript:show_iframe("all_apps")',:class=>'head'}
+          %i.icon-th-list>
+          &nbsp;&nbsp;&nbsp;&nbsp;应用管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %li
+        %a#all_videos{:href => 'javascript:show_iframe("all_videos")',:class=>'head'}
+          %i.icon-th-list>
+          &nbsp;&nbsp;&nbsp;&nbsp;视频管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %li
+        %a#all_ads{:href => "javascript:void(0)", :class=>'head'}
+          %i.icon-th-list>
+          &nbsp;&nbsp;&nbsp;&nbsp;广告位图片管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        %ul
+          %li
+            %a{:href => 'javascript:show_iframe("all_home_ads")'} 首页广告位图片管理
+          %li
+            %a{:href => 'javascript:show_iframe("all_gift_ads")'} 礼包广告位图片管理
+          %li
+            %a{:href => 'javascript:show_iframe("home_pop_ads")'} 弹窗广告位图片管理
+      %li
+        %a#topic_manage{:href => '/admins/bbs_manage',:class=>'head',:target=>'iframe'}
+          %i.icon-th-list>
+          &nbsp;&nbsp;&nbsp;&nbsp;吐槽板块管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      %li
+        %a#topic_manage{:href => '/admins/system_messages',:class=>'head',:target=>'iframe'}
+          %i.icon-th-list>
+          &nbsp;&nbsp;&nbsp;&nbsp;站内信管理&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

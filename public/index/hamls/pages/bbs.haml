@@ -1,0 +1,62 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/bbs_page.css")
+%header
+  %p
+    {{title}}
+  .header-left(ng-tap="go_home()")
+    .btn-style.home-btn
+.wrapper#wrapper.scrollable
+
+  %img.block-background(src="img/madajiasijia.png")
+  .topic(ng-repeat="topic in topics" ng-click='go_to_detail(topic.id)')
+    .topic-content
+      .topic-title
+        {{topic.title}}
+      .topic-body
+        %p
+          {{topic.body}}
+    .topic-info
+      .topic-owner
+        %p.gray.no-margin
+          {{topic.owner.nickname}}
+      .last-replier
+        %p.gray.no-margin
+          {{topic.last_replier.nickname}}
+      .last-replier-time
+        %p.gray.no-margin
+          {{ parse_date(topic.last_replied_at) }}
+      .all-replies
+        .info_1.topics
+          {{topic.total_replies_num }}
+  .btn-style.paginate-btn.left(ng-show="current_page>1" ng-click="go_pre_page()")
+    %p 上一页
+  .btn-style.paginate-btn.left.disable(ng-show="current_page==1")
+    %p 上一页
+  .btn-style.paginate-btn.right(ng-show="current_page<total_pages" ng-click="go_next_page()")
+    %p 下一页
+  .btn-style.paginate-btn.right.disable(ng-show="current_page>=total_pages" )
+    %p 下一页
+  %form.new-topic-form
+    %ng-custom-input.input-full(type="text" placeholder='帖子名称' ng-model="topic_title")
+    %ng-custom-textrea.input-full(placeholder="帖子内容" ng-model="topic_body")
+    %p(class="label-warning" ng-show="has_err") 请填写完整
+    %a.btn-style.btn-2.btn-sub-topic(ng-click="sub_topic()")
+      %img(src="img/register_white.png" style="height:14px;width:14px;margin-top:-2px;" )
+      发帖
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li
+      %a(ng-tap="go_to_page('/video_list/belle')")
+        美女视频
+    %li
+      %a(ng-tap="go_to_page('/all_gift_packs')")
+        礼包
+    %li.active
+      %a
+        吐槽
+    %li
+      %a(ng-tap="go_to_page('/search')")
+        搜索
+    %li
+      %a(ng-tap="go_to_page('/more')")
+        更多

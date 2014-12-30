@@ -1,0 +1,17 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content.width_100( style="margin:0" )
+    %h1 编辑用户管理
+    %a.cursor-pointer(href="/admins/all_editors" )
+      编辑用户管理>>
+    添加编辑
+    %br
+    =render 'admins/add_admin_form'
+    .row
+      .col-xs-5
+      .col-xs-2
+        %button.btn-local_2(onclick="add_new_admin('editor')" )
+          确定
+      .col-xs-2
+        %button.btn-local_1(onclick="back_to_all_admins('editor')" )
+          取消

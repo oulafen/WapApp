@@ -1,0 +1,57 @@
+-# coding: utf-8
+!!! 5
+%html(ng-app="myApp" xmlns:wb = "http://open.weibo.com/wb")
+  %head
+    %script(src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3378155151" type="text/javascript" charset="utf-8")
+    %script(src="http://player.youku.com/jsapi")
+    %meta(http-equiv="Content-Type" content="text/html; charset=utf-8")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0")
+    %meta(name="apple-mobile-web-app-capable" content="yes")
+    %meta(name="apple-mobile-web-app-status-bar-style" content="black")
+    %link(rel="shortcut icon" type="image/png" href="./img/128.png")
+    %link(rel="apple-touch-icon" href="./img/128.png")
+    %title 指头邦官网
+    /gen-css
+    /manual-css
+    %link(rel="stylesheet" type="text/css" href="lib/css/bootstrap.min.css")
+    %link(rel="stylesheet" type="text/css" href="lib/js/angular/mobile-nav.css")
+    %link(rel="stylesheet" type="text/css" href="lib/css/bootstrapswitch-custom.css")
+    %link(rel="stylesheet" type="text/css" href="lib/css/android.css")
+    %link(rel="stylesheet" type="text/css" href="lib/icomoon/style.css")
+    %link(rel="stylesheet" type="text/css" href="css/bootstrap.css")
+    %link(rel="stylesheet" type="text/css" href="css/index.css")
+    %link(rel="stylesheet" type="text/css" href="css/img_slider.css")
+    %link(rel="stylesheet" type="text/css" href="css/user_index.css")
+
+    %link(rel="stylesheet" type="text/css" href="css/jquery/jquery.Jcrop.css")
+
+    /Lib JS
+    %script(lang="javascript" src="lib/js/jquery-2.0.0.min.js" )
+    %script(lang="javascript" src="lib/js/angular/angular.min.js")
+    %script(lang="javascript" src="lib/js/angular/mobile-nav.min.js")
+    %script(lang="javascript" src="lib/js/zepto/zepto.js")
+
+
+    %script(lang="javascript" src="lib/js/underscore/underscore-min.js")
+    %script(lang="javascript" src="lib/js/jquery/jquery.Jcrop.js")
+    %script(lang="javascript" src="lib/js/jquery/jquery.timelinr.js")
+    %script(lang="javascript" src="lib/js/jquery/jquery.mousewheel.js")
+
+    %script(lang="javascript" src="lib/js/bootstrap/bootstrap.js")
+
+
+    %script(lang="javascript" src="lib/js/jt-logic.js/would.js")
+    %script(lang="javascript" src="lib/js/jt-logic.js/relations.js")
+    %script(lang="javascript" src="lib/js/jt-logic.js/conditions.js")
+    %script(lang="javascript" src="lib/js/jt-notify.js/notify.js")
+
+    %script(lang="javascript" src="lib/js/jquery-slider/jquery.slides.js")
+    %script(lang="javascript" src="lib/js/jquery-slider/backstretch.js")
+
+    %script(lang="javascript" src="lib/js/zeroclipboard/ZeroClipboard.js")
+
+    =include_js
+
+
+  %body(ng-controller="MainCtrl" )
+    %mobile-view

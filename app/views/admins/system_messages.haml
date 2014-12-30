@@ -1,0 +1,42 @@
+%body
+  -receiver = {-2=>"所有用户",-1=>"未注册用户",0=>"注册用户"}
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 站内信管理
+    %a{:href =>'/admins/new_sys_msg'}
+      发站内信
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            标题
+          %td
+            内容
+          %td
+            接受者
+          %td
+            发布时间
+          %td
+            操作
+      %tbody
+        -num=0
+        -@sys_messages.each do |msg|
+          -num +=1
+          -id=msg[:id]
+          %tr
+            %td
+              =num
+            %td
+              =msg[:title]
+            %td
+              =msg[:content]
+            %td
+              =receiver[msg[:to_user]]
+            %td
+              =msg[:created_at]
+            %td
+              = link_to '删除', msg, method: :delete, data: { confirm: '删除该站内信?' }
+
+    = will_paginate @sys_messages, :previous_label => "",:next_label=> ""

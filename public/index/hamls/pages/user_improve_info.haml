@@ -1,0 +1,50 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/user_improve_info.css")
+%header
+  %p 完善个人资料
+  .header-left
+    .btn-style.home-btn(ng-tap="go_back()")
+.wrapper#wrapper.scrollable.height-full
+  %img#show_image.width-full(src= 'img/worldcup.png')
+  %button.btn.integral_rules(ng-click="go_integral_rules_page()")
+    %img.img_btn(src="img/whiteCoin.png")
+    积分规则
+  #image_load.image_load(ng-click="go_crop_image()")
+    %img.img_radius.s-55(src= 'img/default_logo_user.png' ng-show="default_logo_show" )
+    %img.img_radius.s-55(ng-src= '{{third_party_user_head}}' ng-show="third_logo_show" )
+    %img.img_radius.s-55(ng-src= '{{tourist_logo_src}}' ng-show="tourist_logo_show" )
+    %input#input_logo(data-file='' type="file" style="display:none"  name='image' ng-model="input_logo")
+    .user-load-head
+      修改头像
+  %br
+  %form.form_inner(name="myForm")
+    %fieldset.form-wrapper
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;我的昵称：
+        %ng-custom-input.form-control(name="nickname" ng-enter="post_user_data()" ng-model="nickname" placeholder="请输入昵称" type="text")
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;设置密码：
+        %ng-custom-input.form-control(name="password" maxlength="12" ng-enter="post_user_data()" ng-model="password" placeholder="请输入6-12位密码" type="password")
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;确认密码：
+        %ng-custom-input.form-control(name="password_confirmation" maxlength="12" ng-enter="post_user_data()" ng-model="password_confirmation" placeholder="请再次输入密码"  type="password")
+      .input-group.bottom_margin
+        %span.input-group-addon.modal-login-label
+          &nbsp;常用邮箱：
+        %ng-custom-input.form-control#mailbox(name="mailbox" ng-enter="post_user_data()" ng-model="mailbox" placeholder="请输入您的常用邮箱(用于登录)"  type="email")
+      .row#error.hide.padding-top-10.margin-left-0
+        .col-xs-12.padding-left-0.register_err
+          #error_info
+      %button.btn.save_personal_info(ng-click="post_user_data()")
+        %img.img_btn(src="img/saveRegist.png" )
+        保存个人资料
+      %button.btn.login_finger_bang(ng-click="go_login()")
+        %img.img_btn(src="img/login.png")
+        登录指头邦
+    %br
+    %br
+    %br
+  %script(src="./js/load_img.js" )

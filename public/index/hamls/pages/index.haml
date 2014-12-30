@@ -1,0 +1,79 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/index_page.css")
+.before-header(ng-show="show_tip")
+  %p 戳这里加入指头邦，赚取积分换好礼，更多惊喜哦
+  .icon-arrow-down
+%header(ng-class="{true: 'show_tip', false: ''}[show_tip]")
+  %p指头邦
+  .header-left(ng-tap="go_next()")
+    %img.header-logo(style="width:30px;height:30px" ng-src="{{user.logo}}")
+    %font.visitor_name(ng-show="!user.login && !user.third_part_login")
+      路人甲
+    .user_info(ng-show="!user.login && user.third_part_login")
+      .header-font-color
+        {{user.nickname}}
+    .user_info(ng-show="user.login")
+      .header-font-color
+        {{user.nickname}}
+      .user_info_1
+        &nbsp;积分:
+        {{user.integral}}
+  .header-right(ng-tap="go_messages()")
+    .message-box
+    .message-number(ng-show="messages.length > 0")
+      %p.number-value
+        {{messages.length}}
+.wrapper#wrapper.scrollable(ng-class="{true: 'show_tip', false: ''}[show_tip]")
+  .pagewrap(style="{{ad_height}}" )
+    #fullscreen.pageblock
+      .slider#slides
+        .slide(ng-repeat='ad in ads' ng-click='open_ad_link(ad.ad_link)' id='{{ad.id}}')
+          %img(ng-src='{{ad.image.url}}' style="height: 100%; top: 0; padding-bottom: 0 !important;")
+  .types-container
+    .type-btn.left(ng-click='go_video_list("hot")')
+      .type-btn-content
+        %img.type-img(style="width:30px;height:30px" src="img/play.png")
+        %p.no-margin.type-btn-text  热播视频
+    .type-btn(ng-click='go_video_list("raiders")')
+      .type-btn-content
+        %img.type-img(style="width:30px;height:30px" src="img/recommend.png")
+        %p.no-margin.type-btn-text  视频攻略
+    .type-btn(ng-click='go_app_list("game")')
+      .type-btn-content
+        %img.type-img(style="width:30px;height:30px" src="img/game.png")
+        %p.no-margin.type-btn-text 游戏
+    .type-btn.right(ng-click='go_app_list("application")')
+      .type-btn-content
+        %img.type-img(style="width:30px;height:30px" src="img/ipad.png")
+        %p.no-margin.type-btn-text  应用
+
+  .video-btn(ng-repeat='(index, video) in videos' ng-click='go_video_detail(video.id)'  ng-class="{true: 'left', false: 'right'}[index%2==0]")
+    .video-content
+      %img.img-icon(ng-src="{{video.list_img.url}}")
+      %div
+        .row.no-margin(style="height:10px" )
+          %h5.col-xs-8.video-name
+            {{video.name}}
+        .row.no-margin(style="height:10px" )
+          %h5.col-xs-8.video-intro
+            {{video.intro}}
+        .row.intro-container
+          %h5.col-xs-3.video-views 浏览量：{{video.views}}
+          %h5.col-xs-5.video-time 上传日期：{{video.created_at.substr(5, 5)}}
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li
+      %a(ng-tap='go_to_page("/video_list/belle")')
+        美女视频
+    %li
+      %a(ng-tap="go_to_page('/all_gift_packs')")
+        礼包
+    %li
+      %a(ng-tap="go_to_page('/bbs/1')")
+        吐槽
+    %li
+      %a(ng-tap="go_to_page('/search')")
+        搜索
+    %li
+      %a(ng-tap="go_to_page('/more')")
+        更多

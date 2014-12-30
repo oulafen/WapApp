@@ -1,0 +1,136 @@
+%script(lang="javascript" src="/javascripts/admin/app_basic_info.js")
+=render 'admins/jarvis_admin_css'
+=render 'admins/jarvis_admin_js'
+#loaderModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "loaderLabel", "data-backdrop" => "static", :role => "dialog", :style => "overflow: hidden; display: none;"}
+  .spinner
+    .rect1
+    .rect2
+    .rect3
+    .rect4
+    .rect5
+    %p{:style => "width:200%;margin-left:-50%;color:#b4b4b4"} 上传中
+#page-content.width_100(style="margin:0;margin-right:15px !important"  rel="#{@app[:id]}")
+  %h1 应用管理
+  %a.cursor-pointer(href="javascript:back_to_all_app()" )
+    应用管理>>
+  =@app[:name]
+  %br#token(rel="#{@uploadToken}" )
+  %br
+  =form_for :app do |f|
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        应用名称：
+        %input(name="app_id" value="#{@app[:id]}" style="display:none" )
+      .add_app_1.col-xs-5
+        =f.text_field :name ,:style=>'height: 28px;'
+        =f.text_field :id ,:style=>'display:none'
+      .add_app_1.text-right.col-xs-1
+        上传logo:
+        = f.file_field :logo, :style=>'display:none' , :id=>'logo_input'
+      .padding_0.col-xs-2
+        %input.form-control#show_logo_input.height_28(name="fake_logo_input" value="#{@logo}" )
+      .add_app_1.col-xs-1
+        %a#logo_overlook
+          浏览
+    .add_app_1.row
+      .col-xs-2.text-right.add_app_1
+        类别：
+      .padding_0.col-xs-1
+        %select#app_category_select(style="width:130%" name='app_category' rel="#{@app_category}")
+          %option --请选择类别--
+          -@app_categories.each do |app_category|
+            %option(id="#{app_category[:name]}" )
+              =app_category[:name]
+      .col-xs-1
+      .padding_0.col-xs-1
+        %select#app_category_detail_select(style="width:130%;margin-left:-20px" rel="#{@app_category_details}" name='app_category_detail' )
+          %option#app_category_detail_option(rel="#{@app_category_detail}")  --请选择类别--
+      .padding_0.text-right.col-xs-3
+        价格：
+      .padding_0.col-xs-3
+        %input#price_rel(type="radio" value="0" name="price" rel="#{@price}" ) 免费
+        %input#paid_radio(type="radio" value="1" name="price") 收费
+        %input.price_input#price_input(name="price_input" onkeyup="if(isNaN(value))execCommand('undo')" onafterpaste="if(isNaN(value))execCommand('undo')")
+        元
+        %input#limit_free(type="radio" value="-1" name="price") 限免
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        安卓下载地址：
+      .padding_0.col-xs-2.add_app_1
+        =f.text_field :apk_link ,:style=>'height: 28px;'
+      .padding_0.text-right.col-xs-4
+        iphone下载地址：
+      .col-xs-2.padding_0
+        =f.text_field :iphone_link ,:style=>'height: 28px;'
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        下载安卓安装包：
+        %input{:type => "file",:id=>"apk_input",:style=>'display:none'}
+      .padding_0.col-xs-2
+        %input.form-control.height_28#show_apk_input(name="fake_apk_input" value="#{@apk}" )
+      .add_app_1.col-xs-2
+        &nbsp;&nbsp;
+        =image_tag 'loading.gif' ,:style=>'height:30px',:class=>'hidden padding_bottom_10',:id=>'apk_loading_img'
+        %a.file#apk_overlook.padding_top_5
+          %input.cursor-pointer
+            浏览
+        %a.file#cancle_apk.my_disabled_color.padding_top_5
+          %input.cursor-pointer(disabled='disabled' onclick="cancle_apk()" id="cancle_input" )
+            取消
+      .add_app_1.text-right.col-xs-2
+        下载iphone安装包：
+        %input{:type => "file",:id=>"ipa_input",:style=>'display:none'}
+      .padding_0.col-xs-2
+        %input.form-control.height_28#show_ipa_input(name="fake_ipa_input" value="#{@ipa}" )
+      .add_app_1.col-xs-2
+        &nbsp;&nbsp;
+        =image_tag 'loading.gif' ,:style=>'height:30px',:id=>'ipa_loading_img',:class=>'hidden padding_bottom_10'
+        %a.file#ipa_overlook.padding_top_5
+          %input.cursor-pointer
+            浏览
+        %a.file#cancle_ipa.my_disabled_color.padding_top_5
+          %input.cursor-pointer(disabled='disabled' onclick="cancle_ipa()" id="cancle_ipa_input" )
+            取消
+    .add_app_1.row(style="margin-top:6px" )
+      .add_app_1.text-right.col-xs-2
+        在线视频地址：
+      .padding_0.col-xs-2.add_app_1
+        =f.text_field :video_link ,:style=>'height: 28px;'
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        应用介绍：
+      .padding_0.col-xs-7
+        =f.text_area :introduce ,:style=>'width:100%;height:300px'
+    .add_app_1.row
+      .add_app_1.text-right.col-xs-2
+        游戏截图：
+      .padding_0.col-xs-2
+        %input.form-control.height_28(placeholder="上传图片" )
+      .add_app_1.col-xs-1
+        %a.file
+          浏览
+          %input.cursor-pointer(type="file"  multiple="true" id="photo_input" name='app_photo')
+    %br
+    .row#photo_num
+      .col-xs-1#photo_files
+      #photo_reader.col-xs-11
+        -photo_num=0
+        -@photo_files.each do |photo_file|
+          .col-xs-2(id="auto_load#{photo_num}")
+            %img.app_photo_large( src="#{photo_file.photo.url}" )
+            %a.app_detail_photo(rel="auto_load#{photo_num}" name="#{photo_file.id}" onclick="delete_auto_load_photo(this)")×
+          -photo_num+=1
+    %br
+    %br
+    .row.no-margin.text-center.hide#post_tips
+    .row
+      .col-xs-6
+        .btn-local.cursor-pointer#submit_new_app(onclick="post_photo()" style="width:80px;float:right;" )
+          保存
+        =f.submit "保存" ,:class=>'btn-local hidden',:style=>'width:80px;float:right;',:id=>'fake_submit_new_app'
+      .col-xs-6
+        .btn-local.cursor-pointer(onclick="refresh_page('/admins/app_basic_info')" style="width:80px" )
+          取消
+    %br
+    %br
+    %br

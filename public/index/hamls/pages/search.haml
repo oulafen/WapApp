@@ -1,0 +1,66 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/search_page.css")
+%header
+  %p 搜索
+  .header-left(ng-Tap = "back_to_home()")
+    %div.btn-style.home-btn
+#wrapper.wrapper.scrollable
+  .content
+    .search-form
+      %ng-custom-input.input-search(type="text" placeholder="搜索" ng-enter="start_search()" ng-model="search_key")
+      .btn-style.search-btn(ng-Tap="start_search()")
+        搜索
+    .search_list
+      .app-list-li(ng-repeat="app in app_results" ng-tap="go_app_detail(app.id)")
+        .row.no-margin
+          %img.app-list-img.col-xs-2.no-padding(ng-src="{{app.logo_file_name}}")
+          .col-xs-7.no-padding
+            .row.no-margin
+              %h5.app-list-name
+                {{app.name}}
+            .row.no-margin
+              .padding_left_10
+                .info_1.topics
+                  {{app.apk_size}}条
+                .info.download
+                  {{app.logo_file_size}}次
+            .row.no-margin
+              %h5.app-list-intro
+                {{app.introduce}}
+          .col-xs-2.no-padding
+            .btn_price_free(ng-show="app.price==0")
+              免费
+            .btn_price_limit(ng-show="app.price==-1")
+              限免
+            .btn_price_paid(ng-show="app.price>0")
+              {{app.price}}元
+      .video-list-li(ng-repeat="video in video_results" ng-tap="go_video_detail(video.id)")
+        .row.no-margin
+          %img.video-list-img.col-xs-2.no-padding(ng-src="{{video.list_img.url}}")
+          .col-xs-8.no-padding
+            .row.no-margin
+              %h5.video-list-name
+                {{video.name}}
+            .row.no-margin
+              %h5.video-list-intro
+                {{video.intro}}
+            .row.no-margin
+              %h5.video-list-views
+                浏览量：{{video.views}}
+%footer
+  %ul(class="footer-nav footer-nav-5tabs")
+    %li
+      %a(ng-tap="go_to_page('/video_list/belle')")
+        美女视频
+    %li
+      %a(ng-tap="go_to_page('/all_gift_packs')")
+        礼包
+    %li
+      %a(ng-tap="go_to_page('/bbs/1')")
+        吐槽
+    %li.active
+      %a
+        搜索
+    %li
+      %a(ng-tap="go_to_page('/more')")
+        更多

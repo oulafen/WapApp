@@ -1,0 +1,58 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header
+      吐槽详情
+    %a.cursor-pointer(href="/admins/bbs_manage" )
+      吐槽模块管理>>
+    发帖
+    %br
+    %br
+    #invoice-id-01.invoice
+      .invoice-body
+        %table
+          %thead
+            %tr
+              %th.item 标题
+              %th.desc 内容
+              %th.price 用户
+              %th.qtn 发布时间
+              %th.sub 操作
+          %tbody
+            %tr
+              %td
+                = @topic[:title]
+              %td
+                = @topic[:body]
+              %td
+                = @users[@topic[:owner]][:nickname]
+              %td
+                = @topic[:created_at]
+              %td
+                = link_to '删除', @topic, method: :delete, data: { confirm: '删除该吐槽?' }
+        %table
+          %thead
+            %tr
+              %th.item 序号
+              %th.desc 内容
+              %th.price 用户
+              %th.qtn 发布时间
+              %th.sub 操作
+          %tbody
+            -num = 0
+            -@replies.each do |reply|
+              -num += 1
+              %tr
+                %td
+                  = num
+                %td
+                  = reply[:reply_body]
+                %td
+                  = @users[reply[:replier]][:nickname]
+                %td
+                  = reply[:created_at]
+                %td
+                  = link_to '删除', reply , method: :delete, data: { confirm: '删除该回复?' }
+
+    = will_paginate @replies, :previous_label => "",:next_label=> ""
+    =render 'admins/admin_reply_to_topic_form'

@@ -1,0 +1,29 @@
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 管理员用户管理
+    %a{:href =>'/admins/new_admin'}
+      添加管理员
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            用户名
+          %td
+            操作
+      %tbody
+        -num=0
+        -@admins.each do |admin|
+          -num +=1
+          %tr
+            %td
+              =num
+            %td
+              =admin[:name]
+            %td
+              =link_to '修改', admin_info_path(:id=>admin[:id])
+              =link_to '删除', delete_admin_session_path(:id=>admin[:id],:admin_type=>'admin'),method:'delete',data:{:confirm=>'确定删除该账号？'}
+
+    = will_paginate @admins, :previous_label => "",:next_label=> ""

@@ -1,0 +1,45 @@
+%script(lang="javascript" src="/javascripts/admin/videos_manage.js")
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content(style="margin:0" )
+    %h1#page-header 视频管理
+    %a{:href =>'/admins/new_video', :class => 'btn'}
+      添加视频
+    %table.table
+      %thead
+        %tr
+          %td
+            序号
+          %td
+            名称
+          %td
+            浏览次数
+          %td
+            发布时间
+          %td
+            显示位置
+          %td
+            操作
+      %tbody
+        -num = 0
+        -@videos.each do |video|
+          -num += 1
+          %tr
+            %td
+              = num
+            %td
+              = video.name
+            %td
+              = video.views
+            %td
+              = video.created_at
+            %td
+              = video.position
+              = video.is_recommend ? "首页推荐" : ""
+            %td
+              %a(href="javascript:show_video_details_info(#{video.id})" )
+                详情
+              =link_to '删除', delete_video_session_path(:id => video.id),
+                              :method => 'delete' ,
+                              :data => {:confirm=>'确定删除' + video.name + '视频？'}
+    = will_paginate @videos, :previous_label => "",:next_label=> ""

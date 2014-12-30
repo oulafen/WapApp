@@ -1,0 +1,66 @@
+-# coding: utf-8
+%link(rel="stylesheet" type="text/css" href="css/video_detail.css")
+%header
+  %p
+    {{video.name}}
+  .header-left(ng-tap='go_back()' ng-show = "!all_replies_show")
+    .btn-style.back-btn
+  .header-left(ng-tap='back_detail()' ng-show = "all_replies_show")
+    .btn-style.back-btn
+  .header-right(ng-click='share_app()')
+    %img.share_img(src="img/share——white.png"  )
+.wrapper#wrapper.scrollable(style="bottom: 0 !important; padding-bottom: 30px;" )
+  .content-container
+    .video-header.clearfix
+      %img.list-img(ng-src="{{video.list_img.url}}")
+      %div.video-info-container
+        .video-detail-name
+          {{video.name}}
+        .row.no-margin(style="margin-top: 2% !important" )
+          %h5.col-xs-4.video-detail-views 浏览量：{{video.views}}
+          %h5.col-xs-6.video-detail-time 上传日期：{{video.created_at.substr(0, 10)}}
+    .clearfix.youku-container(ng-show = "!all_replies_show")
+      #youkuplayer.full-width(style="width:100%;height:{{youku_height}}" )
+    .video-detail-container
+      .width-full(ng-show = "!all_replies_show")
+        %img.s-20(src="img/register.png" )
+        %font.tag_name
+          视频介绍
+        .video-intro-content
+          %p
+            %video-introduce
+              {{video.intro}}
+      .width-full(ng-show = "!all_replies_show")
+        %img.s-20(src="img/register.png" )
+        %font.tag_name
+          美女图片
+      .row.no-margin(style="padding-left: 2%" )
+        %img.video-img.col-xs-2(ng-repeat='video_img in video_imgs' src="{{video_img.img.url}}" ng-click="show_big_image(video_img.img.url)")
+      .width-full
+        %img.s-20(src="img/topic.png" )
+        %font.tag_name
+          用户评论
+        .margin-reply
+        .replies(ng-repeat="reply in replies | limitTo:reply_limit")
+          .topic-created-at
+            {{parse_date(reply.created_at)}}
+          %img.replier_logo(ng-src="{{reply.replier.logo || 'img/default_logo_user.png'}}")
+          .reply_body
+            .reply_name
+              {{reply.replier.nickname}}
+            .reply_content
+              {{reply.reply_body}}
+        %form.new-topic-form
+          %a.btn-style.btn-2.btn-sub-topic.more-btn(ng-click="show_all_replies()" ng-show = "!all_replies_show && replies.length > 3 ")
+            更多用户评论 >>
+          %ng-custom-textrea.input-full( placeholder="评论内容" ng-model="reply_body")
+          %p(class="label-warning" ng-show="has_err") 请填写完整
+          %a.btn-style.btn-2.btn-sub-topic(ng-click="sub_reply()")
+            %img(src="img/register_white.png" style="height:14px;width:14px;margin-top:-2px;")
+            发布评论
+.modal.fade#big_img_modal
+  .modal-dialog(style="width:90%;margin:10%" )
+    .modal-content
+      .modal-body(style="padding:0" )
+        %img(ng-src="{{big_image_src}}" width="100%" max-height="100%")
+

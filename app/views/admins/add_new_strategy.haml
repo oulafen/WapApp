@@ -1,0 +1,60 @@
+%script(lang="javascript"  src="/javascripts/admin/add_new_strategy.js")
+%body
+  =render 'admins/jarvis_admin_css'
+  #page-content.width_100( style="margin:0" )
+    %a.cursor-pointer(href="javascript:back_to_all_app()" )
+      应用管理>>
+    %a.cursor-pointer(href="/admins/strategies" )
+      =@app[:name]
+      >>
+    添加攻略
+    %br
+    %br
+    .row.no-margin
+      %p.col-xs-3.text-center.video-p
+        名称：
+      %input(id="app_id" style="display:none" value="#{@app[:id]}" )
+      .col-xs-4.padding_0
+        %input.margin_bottom_10.form-control.height_34(id="name" )
+    .row.no-margin
+      %p.col-xs-3.video-p
+        视频地址：
+      .col-xs-4.padding_0
+        %input.margin_bottom_10.form-control.height_34(id="video_link" )
+    .row.no-margin
+      %p.col-xs-3.video-p
+        上传视频在列表中的显示图：
+      .col-xs-3.height_34.padding_0.margin_bottom_10
+        %input#list_img_input.form-control(name="fake_list_img" )
+      .col-xs-1
+        %a.cursor-pointer.file.file_font
+          浏览
+          %input(type="file" id="list_img_file" )
+    .row.no-margin
+      %p.col-xs-3.video-p
+        上传视频封面图：
+      .col-xs-3.height_34.padding_0
+        %input#video_img_input.form-control(name="fake_video_img" )
+      .col-xs-1
+        %a.cursor-pointer.file.file_font
+          浏览
+          %input(type="file" id="video_img_file" )
+    .row.no-margin
+      %br
+      %p.col-xs-3.video-p
+        详情：
+      .padding-0.col-xs-9.font-size-14
+        =render '/admins/strategy_editor'
+        #editor(name="detail_content")
+    %br
+    .row.no-margin.text-center.hide#post_tips
+      %p.post-tip
+        正在上传数据,请耐心等待...
+    .row
+      .text-right.col-xs-6
+        %button.btn-local(onclick="post_strategy_data()" )
+          保存
+      .col-xs-6
+        .btn-local.cursor-pointer(onclick="back_to_strategies()" style="width:80px" )
+          取消
+    %br
